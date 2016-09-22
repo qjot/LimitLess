@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace LimitLess.Models
+namespace Limitless.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using LimitLess.Models;
+using Limitless.Web.Models;
 
-namespace LimitLess
+namespace Limitless.Web
 {
     public class EmailService : IIdentityMessageService
     {

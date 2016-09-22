@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(LimitLess.Startup))]
-namespace LimitLess
+[assembly: OwinStartupAttribute(typeof(Limitless.Web.Startup))]
+namespace Limitless.Web
 {
     public partial class Startup
     {

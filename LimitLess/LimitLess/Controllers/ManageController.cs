@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using LimitLess.Models;
+using Limitless.Web.Models;
 
-namespace LimitLess.Controllers
+namespace Limitless.Web.Controllers
 {
     [Authorize]
     public class ManageController : Controller

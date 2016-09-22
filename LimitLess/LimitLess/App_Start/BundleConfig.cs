@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace LimitLess
+namespace Limitless.Web
 {
     public class BundleConfig
     {
