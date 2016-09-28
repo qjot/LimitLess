@@ -52,6 +52,8 @@
     <Compile Include="Configuration\ClassesConfiguration.cs" />
     <Compile Include="Configuration\HallConfiguration.cs" />
     <Compile Include="Configuration\TimetableConfiguration.cs" />
+    <Compile Include="LimitlessEntities.cs" />
+    <Compile Include="LimitlessSeedData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
