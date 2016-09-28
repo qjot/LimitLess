@@ -14,7 +14,7 @@ using Limitless.Web.Models;
 
 namespace Limitless.Web
 {
-    public class EmailService : IIdentityMessageService
+    public class EmailService : IIdentityMessageService 
     {
         public Task SendAsync(IdentityMessage message)
         {
