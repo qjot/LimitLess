@@ -14,11 +14,13 @@ namespace Limitless.Data
             {
             GetHall().ForEach(c => context.halls.Add(c));
             GetTimetable().ForEach(g => context.timetables.Add(g));
-
+                GetClasses().ForEach(k => context.classeses.Add(k));
                 context.Commit();
             }
 
-            private static List<Hall> GetHall()
+     
+
+        private static List<Hall> GetHall()
             {
                 return new List<Hall>
             {
@@ -39,9 +41,40 @@ namespace Limitless.Data
             {
                 return new List<Timetable>
             {
-             
+             new Timetable
+             {
+                 capacity = 20,
+                 timetableID = 0,
+                 classesID = 0,
+                 date = DateTime.Now,
+                 trainerID = 1,
+                 hallID = 0
+             },
+             new Timetable
+             {
+
+                 capacity = 10,
+                 timetableID = 1,
+                 classesID = 1,
+                 date = DateTime.Now,
+                 trainerID = 2,
+                 hallID = 1
+             }
 
             };
             }
+        private static List<Classes> GetClasses()
+        {
+            return new List<Classes>
+            {
+                new Classes
+                {
+                    name = "Fintess",
+                    classesId = 0,
+                    description = "Zajęcia fintess dla wszystkich",
+                    last = "45"
+                }
+            };
         }
+    }
     }

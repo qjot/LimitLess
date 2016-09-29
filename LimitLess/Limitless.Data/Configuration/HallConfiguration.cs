@@ -7,7 +7,7 @@ namespace Limitless.Data.Configuration
     {
         public HallConfiguration()
         {
-            ToTable("Hall");
+            ToTable("Halls");
             Property(g => g.hallId).IsRequired();
             Property(g => g.name).IsRequired().HasMaxLength(50);
             Property(g => g.maxCapacity).IsRequired();

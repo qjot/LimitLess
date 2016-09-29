@@ -7,7 +7,7 @@ namespace Limitless.Data.Configuration
     {
         public TimetableConfiguration()
         {
-            ToTable("Timetable");
+            ToTable("Timetables");
             Property(g => g.capacity).IsRequired();
             Property(g => g.timetableID).IsRequired();
             Property(g => g.date.Value).IsRequired();
