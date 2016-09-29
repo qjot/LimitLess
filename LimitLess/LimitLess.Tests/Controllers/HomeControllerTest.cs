@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LimitLess;
-using LimitLess.Controllers;
+using Limitless.Web.Controllers;
 
 namespace LimitLess.Tests.Controllers
 {

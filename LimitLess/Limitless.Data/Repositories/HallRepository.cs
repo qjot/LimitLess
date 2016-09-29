@@ -15,10 +15,16 @@ namespace Limitless.Data.Repositories
         {
         }
 
+        public Hall GetHallByName(string hallName)
+        {
+            var hall = this.DbContext.halls.FirstOrDefault(x => x.name == hallName);
+            return hall;
+        }
+
     }
 
     public interface IHallRepository : IRepository<Hall>
     {
-        
+       Hall GetHallByName(string hallName);
     }
 }

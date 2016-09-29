@@ -1,0 +1,12 @@
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\Limitless.Data.dll.config
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\Limitless.Data.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\Limitless.Data.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\EntityFramework.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\Limitless.Model.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\Limitless.Model.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\EntityFramework.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csprojResolveAssemblyReference.cache
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb

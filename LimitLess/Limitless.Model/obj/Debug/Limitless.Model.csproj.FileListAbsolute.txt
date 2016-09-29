@@ -1,0 +1,5 @@
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.csprojResolveAssemblyReference.cache
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.pdb

@@ -80,3 +80,13 @@ E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\LimitLess.Web.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\LimitLess.Web.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Autofac.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Autofac.Integration.Mvc.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Data.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Service.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Model.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Data.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Service.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Autofac.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Autofac.Integration.Mvc.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess\bin\Limitless.Model.pdb

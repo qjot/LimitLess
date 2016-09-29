@@ -18,7 +18,7 @@ namespace Limitless.Data.Repositories
 
     }
 
-    internal interface ITimetableRepository
+    public  interface ITimetableRepository : IRepository<Timetable>
     {
     }
 }
