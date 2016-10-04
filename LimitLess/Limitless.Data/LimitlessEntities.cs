@@ -2,6 +2,7 @@
 using Limitless.Data.Configuration;
 using Limitless.Model;
 
+
 namespace Limitless.Data
 {
     public class LimitlessEntities : DbContext
@@ -10,6 +11,7 @@ namespace Limitless.Data
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
         public DbSet<Timetable> timetables { get; set; }
+        public DbSet<Order> orders { get; set; }
 
         public virtual void Commit()
         {

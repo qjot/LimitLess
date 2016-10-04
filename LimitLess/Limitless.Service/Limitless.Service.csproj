@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ClassesService.cs" />
     <Compile Include="HallService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimetableService.cs" />
   </ItemGroup>

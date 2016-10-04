@@ -12,7 +12,7 @@ namespace Limitless.Service
 
     public interface IHallService
     {
-        IEnumerable<Hall> GetCategories(string name = null);
+        IEnumerable<Hall> GetHalls(string name = null);
         Hall GetHall(int id);
         Hall GetHall(string name);
         void CreateHall(Hall Hall);
@@ -31,7 +31,7 @@ namespace Limitless.Service
 
         #region IHallService Members
 
-        public IEnumerable<Hall> GetCategories(string name = null)
+        public IEnumerable<Hall> GetHalls(string name = null)
         {
             if (string.IsNullOrEmpty(name))
                 return HallsRepository.GetAll();

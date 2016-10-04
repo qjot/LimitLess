@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Limitless.Data;
+using LimitLess.Web.App_Start;
 
 namespace Limitless.Web
 {
@@ -18,6 +19,7 @@ namespace Limitless.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Bootstrapper.Run();
         }
     }
 }

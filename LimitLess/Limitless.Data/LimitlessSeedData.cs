@@ -46,7 +46,7 @@ namespace Limitless.Data
                  capacity = 20,
                  timetableID = 0,
                  classesID = 0,
-                 date = DateTime.Now,
+                 //date = DateTime.Now,
                  trainerID = 1,
                  hallID = 0
              },
@@ -56,7 +56,7 @@ namespace Limitless.Data
                  capacity = 10,
                  timetableID = 1,
                  classesID = 1,
-                 date = DateTime.Now,
+                // date = DateTime.Now,
                  trainerID = 2,
                  hallID = 1
              }

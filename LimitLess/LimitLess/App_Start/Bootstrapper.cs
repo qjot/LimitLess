@@ -9,6 +9,7 @@ using Autofac.Integration.Mvc;
 using Limitless.Data.Infrastructure;
 using Limitless.Data.Repositories;
 using Limitless.Service;
+using Limitless.Web;
 
 
 namespace LimitLess.Web.App_Start
@@ -48,7 +49,6 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(TimetableService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
-
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
