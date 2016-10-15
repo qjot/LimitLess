@@ -1,4 +1,13 @@
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.dll.config
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.pdb

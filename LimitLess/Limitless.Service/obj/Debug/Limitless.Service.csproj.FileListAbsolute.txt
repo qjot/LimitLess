@@ -1,11 +1,16 @@
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.dll.config
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Data.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Model.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\EntityFramework.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Data.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Model.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\EntityFramework.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.csprojResolveAssemblyReference.cache
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.pdb

@@ -1,4 +1,3 @@
-E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\obj\Debug\LimitLess.Tests.csprojResolveAssemblyReference.cache
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\ApplicationInsights.config
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\roslyn\csc.exe
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -33,8 +32,8 @@ E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Owin.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Service.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Model.dll
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Service.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Autofac.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\EntityFramework.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
@@ -55,12 +54,13 @@ E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.AspNe
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.Security.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Service.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Model.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Service.pdb
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Autofac.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\EntityFramework.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Autofac.Integration.Mvc.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\bin\Debug\Limitless.Data.pdb
+E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\obj\Debug\LimitLess.Tests.csprojResolveAssemblyReference.cache
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\obj\Debug\LimitLess.Tests.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\LimitLess.Tests\obj\Debug\LimitLess.Tests.pdb
