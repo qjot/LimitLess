@@ -11,3 +11,17 @@ E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNe
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.dll.config
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Limitless.Model.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.csprojResolveAssemblyReference.cache
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.pdb

@@ -12,7 +12,8 @@ namespace Limitless.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-           // TODO Delete Tworzenie Admina createRolesandUsers();
+            
+            // TODO Delete Tworzenie Admina createRolesandUsers();
         }
 
         private void createRolesandUsers()
@@ -21,6 +22,7 @@ namespace Limitless.Web
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
 
 
             // In Startup iam creating first Admin Role and creating a default Admin User 
@@ -35,10 +37,10 @@ namespace Limitless.Web
                 //Here we create a Admin super user who will maintain the website				
 
                 var user = new ApplicationUser();
-                user.UserName = "qjot";
-                user.Email = "mr.lorak@gmail.com";
+                user.UserName = "admin";
+                user.Email = "admin@limitless.com";
 
-                string userPWD = "Qazzaq1!";
+                string userPWD = "Admin!23";
 
                 var chkUser = userManager.Create(user, userPWD);
 

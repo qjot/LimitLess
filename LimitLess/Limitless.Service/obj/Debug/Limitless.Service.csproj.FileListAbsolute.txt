@@ -14,3 +14,19 @@ E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.Asp
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.csprojResolveAssemblyReference.cache
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.dll
 E:\Kojot\Praca Inz\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.dll.config
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Service.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Data.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Model.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\EntityFramework.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Data.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Limitless.Model.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\EntityFramework.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.csprojResolveAssemblyReference.cache
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Debug\Limitless.Service.pdb
