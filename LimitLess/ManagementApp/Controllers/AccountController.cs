@@ -75,7 +75,7 @@ namespace ManagementApp.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName,model.Password, isPersistent: false, shouldLockout: false); 
+            var result = await SignInManager.PasswordSignInAsync(model.Email,model.Password, isPersistent: false, shouldLockout: false); 
             switch (result)
             {
                 case SignInStatus.Success:
@@ -163,7 +163,7 @@ namespace ManagementApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("LogIn", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -392,7 +392,7 @@ namespace ManagementApp.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("LogIn", "Home");
+            return RedirectToAction("LogIn", "Account");
         }
 
         //

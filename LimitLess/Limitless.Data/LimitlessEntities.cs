@@ -7,7 +7,10 @@ namespace Limitless.Data
 {
     public class LimitlessEntities : DbContext
     {
-        public LimitlessEntities() : base("LimitlessEntities") { }
+        public LimitlessEntities() : base("LimitlessEntities")
+        {
+            Database.SetInitializer<LimitlessEntities>(new DropCreateDatabaseIfModelChanges<LimitlessEntities>());
+        }
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
         public DbSet<Timetable> timetables { get; set; }

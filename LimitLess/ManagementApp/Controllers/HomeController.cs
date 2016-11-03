@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Limitless.Model;
 using Limitless.Service;
 using ManagementApp.DataAnnotation;
+using ManagementApp.Models;
 
 namespace ManagementApp.Controllers
 {
@@ -20,8 +21,9 @@ namespace ManagementApp.Controllers
             this.timetableService = timetableService;
         }
 
-        public ActionResult Login()
+        public ActionResult Index()
         {
+            var model = new IndexViewModel();
 
             return View();
         }
