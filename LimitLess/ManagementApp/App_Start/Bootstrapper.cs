@@ -36,6 +36,9 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(TimetableRepository).Assembly)
                .Where(t => t.Name.EndsWith("Repository"))
                .AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterAssemblyTypes(typeof(OrderRepository).Assembly)
+               .Where(t => t.Name.EndsWith("Repository"))
+               .AsImplementedInterfaces().InstancePerRequest();
             // Services
             builder.RegisterAssemblyTypes(typeof(HallService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
@@ -46,6 +49,10 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(TimetableService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterAssemblyTypes(typeof(OrderDetailsService).Assembly)
+               .Where(t => t.Name.EndsWith("Service"))
+               .AsImplementedInterfaces().InstancePerRequest();
+
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

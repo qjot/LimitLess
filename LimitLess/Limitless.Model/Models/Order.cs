@@ -1,16 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Limitless.Model
 {
     public class Order
     {
         public int orderId { get; set; }
-       // public DateTime? orderDate { get; set; }
+        // public DateTime? orderDate { get; set; }
+        [DisplayFormat(DataFormatString = "dd-MM-yyyy hh:mm")]
+        public DateTime? OrderDate { get; set; }
         public string username { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -24,5 +23,7 @@ namespace Limitless.Model
         public string email { get; set; }
         public decimal? total { get; set; }
         public string nip { get; set; }
+        public virtual ICollection<OrderDetail> orderDetails { get; set; }
+
     }
 }

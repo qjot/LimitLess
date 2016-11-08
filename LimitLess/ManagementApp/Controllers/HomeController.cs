@@ -23,8 +23,8 @@ namespace ManagementApp.Controllers
 
         public ActionResult Index()
         {
-            var model = new IndexViewModel();
-
+            IndexViewModel model = new IndexViewModel();
+            //model.entityNamesDictionary
             return View();
         }
 

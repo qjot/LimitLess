@@ -12,9 +12,10 @@ namespace Limitless.Data
     {
             protected override void Seed(LimitlessEntities context)
             {
-            GetHall().ForEach(c => context.halls.Add(c));
-            GetTimetable().ForEach(g => context.timetables.Add(g));
-                GetClasses().ForEach(k => context.classeses.Add(k));
+            //GetHall().ForEach(c => context.halls.Add(c));
+            //GetTimetable().ForEach(g => context.timetables.Add(g));
+            //GetClasses().ForEach(k => context.classeses.Add(k));
+            GetOrderDetail().ForEach(x => context.orderDetails.Add(x));
                 context.Commit();
             }
 
@@ -37,7 +38,32 @@ namespace Limitless.Data
             };
             }
 
-            private static List<Timetable> GetTimetable()
+        private static List<OrderDetail> GetOrderDetail()
+        {
+            return new List<OrderDetail>
+            {
+                new OrderDetail {
+                    orderId = 0,
+                    orderDetailId = 0,
+                    description = "Przykładowe zamówienie",
+                    name = "cos",
+                    productId = 0,
+                    unitPrice = 20,
+                    quantity = 1
+                },
+                new OrderDetail {
+                    orderId = 1,
+                    orderDetailId = 1,
+                    description = "Przykładowe zamówienie 1",
+                    name = "cos1",
+                    productId = 1,
+                    unitPrice = 20,
+                    quantity = 1
+                }
+            };
+        }
+
+        private static List<Timetable> GetTimetable()
             {
                 return new List<Timetable>
             {
