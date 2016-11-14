@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using ManagementApp.DataAnnotation;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -79,7 +80,10 @@ namespace ManagementApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    FormsAuthentication.SetAuthCookie(model.Email, createPersistentCookie:false);
+                    Session["MyMenu"] = null;
+                    return RedirectToAction("Index", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 //case SignInStatus.RequiresVerification:
@@ -392,6 +396,8 @@ namespace ManagementApp.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
+            Session["MyMenu"] = null;
             return RedirectToAction("LogIn", "Account");
         }
 

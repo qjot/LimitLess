@@ -10,7 +10,6 @@ namespace Limitless.Model{
     [Table("Order Detail")]
     public class OrderDetail
     {
-
         public int orderDetailId { get; set; }
         public int orderId { get; set; }
         [Key]
@@ -19,7 +18,9 @@ namespace Limitless.Model{
 
         [Key]
         public int productId { get; set; }
+        [Required]
         public string name{ get; set; }
+        [Required]
         public string description { get; set; }
         [Required]
         public decimal unitPrice { get; set; }

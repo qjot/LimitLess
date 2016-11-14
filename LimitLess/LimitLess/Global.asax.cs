@@ -14,7 +14,7 @@ namespace Limitless.Web
     {
         protected void Application_Start()
         {
-             System.Data.Entity.Database.SetInitializer(new LimitlessSeedData());
+             //System.Data.Entity.Database.SetInitializer(new LimitlessSeedData());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

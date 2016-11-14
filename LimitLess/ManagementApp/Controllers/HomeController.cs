@@ -24,7 +24,6 @@ namespace ManagementApp.Controllers
         public ActionResult Index()
         {
             IndexViewModel model = new IndexViewModel();
-            //model.entityNamesDictionary
             return View();
         }
 

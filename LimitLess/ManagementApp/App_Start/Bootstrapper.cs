@@ -49,7 +49,7 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(TimetableService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(OrderDetailsService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(OrderDetailService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
 

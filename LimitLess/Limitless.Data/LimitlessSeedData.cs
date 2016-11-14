@@ -12,9 +12,9 @@ namespace Limitless.Data
     {
             protected override void Seed(LimitlessEntities context)
             {
-            //GetHall().ForEach(c => context.halls.Add(c));
-            //GetTimetable().ForEach(g => context.timetables.Add(g));
-            //GetClasses().ForEach(k => context.classeses.Add(k));
+            GetHall().ForEach(c => context.halls.Add(c));
+            GetTimetable().ForEach(g => context.timetables.Add(g));
+            GetClasses().ForEach(k => context.classeses.Add(k));
             GetOrderDetail().ForEach(x => context.orderDetails.Add(x));
                 context.Commit();
             }

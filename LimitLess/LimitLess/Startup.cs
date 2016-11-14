@@ -13,7 +13,7 @@ namespace Limitless.Web
         {
             ConfigureAuth(app);
             
-            // TODO Delete Tworzenie Admina createRolesandUsers();
+            createRolesandUsers();
         }
 
         private void createRolesandUsers()
