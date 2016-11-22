@@ -2,21 +2,27 @@
     var menus = new[]
     {
         new {LinkText = "LimitLess", ActionName = "Index", ControllerName = "Home", Roles = "All"},
-        new {LinkText = "Użytkownicy", ActionName = "About", ControllerName = "Home", Roles = "Anonymous"},
-        new {LinkText = "Trenerzy", ActionName = "Contact", ControllerName = "Home", Roles = "Anonymous"},
-        new {LinkText = "Zajęcia", ActionName = "Index", ControllerName = "Home", Roles = "Dealer"},
+        new {LinkText = "Użytkownicy", ActionName = "Index", ControllerName = "User", Roles = "Admin, Anonymous"},
+        new {LinkText = "Trenerzy", ActionName = "Contact", ControllerName = "Home", Roles = "Admin, Anonymous"},
+        new {LinkText = "Zajęcia", ActionName = "Index", ControllerName = "Home", Roles = "Admin, Dealer"},
         new {LinkText = "Sale", ActionName = "Index", ControllerName = "Home", Roles = "Admin"},
         new {LinkText = "Karnety", ActionName = "Contact", ControllerName = "Home", Roles = "Admin"},
         new {LinkText = "Zamówienia", ActionName = "Contact", ControllerName = "Home", Roles = "Dealer,PublicUser"},
     };
 }
-    <ul id="menu">
+
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin;
+
+   
         @if (HttpContext.Current.User.Identity.IsAuthenticated)
         {
-            String[] roles = Roles.GetRolesForUser();
-            var links = from item in menus
+            
+                var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var userRoles = userManager.GetRoles(User.Identity.GetUserId());
+               var links = from item in menus
                         where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
-                        .Any(x => roles.Contains(x) || x == "All")
+                        .Any(x => userRoles.Contains(x) || x == "All")
                         select item;
             foreach (var link in links)
             {
@@ -36,5 +42,5 @@
                 <li> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>
             }
         }
-    </ul>
-} 
+   
+ 

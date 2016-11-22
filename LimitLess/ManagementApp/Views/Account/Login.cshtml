@@ -1,12 +1,9 @@
-﻿@inherits System.Web.Mvc.WebViewPage
+﻿@model ManagementApp.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sign in</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
     <style>
         body {
@@ -50,8 +47,6 @@
             border-top-right-radius: 0;
         }
     </style>
-</head>
-<body>
 <div class="container">
     <div class="wrapper">
         <h1>
@@ -64,9 +59,32 @@
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email" id="login" name="Email" required="" autofocus="">
-                    <input type="password" class="form-control" placeholder="Password" id="password" name="Password" required="">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    @*<input type="text" class="form-control" placeholder="Email" id="login" name="Email" required="" autofocus="">
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="Password" required="">*@
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = " control-label" })
+                            <div >
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @id = "login", @required = "", @autofocus = "" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                            <div >
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" , @id = "password" , @name = "Password" , @required = ""  })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                          <div class="form-group">
+                            <div >
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                     </div>
                 }
             </div>
@@ -75,5 +93,3 @@
         <p>© <a href="">LimitLess</a> @DateTime.Now.ToString("yyyy")</p>
     </div>
 </div>
-</body>
-</html>

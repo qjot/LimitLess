@@ -19,6 +19,7 @@ namespace ManagementApp.Controllers
         {
             this.hallService = hallService;
             this.timetableService = timetableService;
+
         }
 
         public ActionResult Index()

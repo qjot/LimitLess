@@ -109,6 +109,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\AdminResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cofiguration\ClassesConfiguration.cs" />
     <Compile Include="Cofiguration\HallConfiguration.cs" />
     <Compile Include="Cofiguration\OrderConfiguration.cs" />
@@ -130,7 +135,12 @@
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\TimetableRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\AdminResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

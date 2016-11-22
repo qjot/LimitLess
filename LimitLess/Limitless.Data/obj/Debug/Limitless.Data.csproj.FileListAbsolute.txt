@@ -67,3 +67,5 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\bin\Debug\System.
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csprojResolveAssemblyReference.cache
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.App_GlobalResources.AdminResources.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csproj.GenerateResource.Cache

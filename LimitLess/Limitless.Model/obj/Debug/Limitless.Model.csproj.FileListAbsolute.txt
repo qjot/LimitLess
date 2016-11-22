@@ -22,6 +22,5 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Entity
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.csprojResolveAssemblyReference.cache
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Model\obj\Debug\Limitless.Model.pdb
