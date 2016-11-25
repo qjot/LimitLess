@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using ManagementApp.Models;
+using System.Configuration;
 
 namespace ManagementApp
 {
@@ -58,11 +59,11 @@ namespace ManagementApp
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = ConfigurationManager.AppSettings["ClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["ClientSecret"]
+            });
         }
     }
 }

@@ -8,7 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using Limitless.Data;
 using Limitless.Model;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
+using ManagementApp.Models;
 
 namespace ManagementApp.Controllers
 {
@@ -92,7 +95,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            var user = UserManager.FindById(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -105,15 +108,28 @@ namespace ManagementApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,AccessFailedCount,UserName")] User user)
         {
             if (ModelState.IsValid)
             {
+                
+                modifyOldUser(user);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(user);
+        }
+
+        private void modifyOldUser(User user)
+        {
+            ApplicationUser oldUser = UserManager.FindById(user.Id);
+            oldUser.UserName = user.UserName;
+            oldUser.PhoneNumber = user.PhoneNumber;
+            oldUser.Roles = user.Roles;
+            oldUser.Email = user.Email;
+            oldUser.AccessFailedCount= user.AccessFailedCount;
+            throw new NotImplementedException();
         }
 
         // GET: User/Delete/5
@@ -157,3 +173,4 @@ namespace ManagementApp.Controllers
         }
     }
 }
+

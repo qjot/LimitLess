@@ -159,15 +159,21 @@ namespace ManagementApp.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            var callbackUrl = Url.Action(
+               "ConfirmEmail", "Account", 
+               new { userId = user.Id, code = code }, 
+               protocol: Request.Url.Scheme);
 
-                    return RedirectToAction("Index", "Home");
+            await UserManager.SendEmailAsync(user.Id, 
+               "Confirm your account", 
+               "Please confirm your account by clicking this link: <a href=\"" 
+                                               + callbackUrl + "\">link</a>");
+            return View("DisplayEmail");
+
+                    // return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -185,8 +191,27 @@ namespace ManagementApp.Controllers
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            IdentityResult result;
+            try
+            {
+                result = await UserManager.ConfirmEmailAsync(userId, code);
+            }
+            catch (InvalidOperationException ioe)
+            {
+                // ConfirmEmailAsync throws when the userId is not found.
+                ViewBag.errorMessage = ioe.Message;
+                return View("Error");
+            }
+
+            if (result.Succeeded)
+            {
+                return View();
+            }
+
+            // If we got this far, something failed.
+            AddErrors(result);
+            ViewBag.errorMessage = "ConfirmEmail failed";
+            return View("Error");
         }
 
         //
@@ -213,12 +238,12 @@ namespace ManagementApp.Controllers
                     return View("ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account",
+                new { UserId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password",
+                "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -455,7 +480,7 @@ namespace ManagementApp.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("LogIn", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

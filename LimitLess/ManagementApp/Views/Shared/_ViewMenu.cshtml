@@ -2,12 +2,13 @@
     var menus = new[]
     {
         new {LinkText = "LimitLess", ActionName = "Index", ControllerName = "Home", Roles = "All"},
-        new {LinkText = "Użytkownicy", ActionName = "Index", ControllerName = "User", Roles = "Admin, Anonymous"},
+        new {LinkText = "Users", ActionName = "Index", ControllerName = "User", Roles = "Admin, Anonymous"},
+        new {LinkText = "Roles", ActionName = "Index", ControllerName = "RolesAdmin", Roles = "Admin, Anonymous"},
         new {LinkText = "Trenerzy", ActionName = "Contact", ControllerName = "Home", Roles = "Admin, Anonymous"},
-        new {LinkText = "Zajęcia", ActionName = "Index", ControllerName = "Home", Roles = "Admin, Dealer"},
-        new {LinkText = "Sale", ActionName = "Index", ControllerName = "Home", Roles = "Admin"},
-        new {LinkText = "Karnety", ActionName = "Contact", ControllerName = "Home", Roles = "Admin"},
-        new {LinkText = "Zamówienia", ActionName = "Contact", ControllerName = "Home", Roles = "Dealer,PublicUser"},
+        new {LinkText = "Classes", ActionName = "Index", ControllerName = "Home", Roles = "Admin, Dealer"},
+        new {LinkText = "Halls", ActionName = "Index", ControllerName = "Home", Roles = "Admin"},
+        new {LinkText = "Carnets", ActionName = "Contact", ControllerName = "Home", Roles = "Admin"},
+        new {LinkText = "Orders", ActionName = "Contact", ControllerName = "Home", Roles = "Dealer,PublicUser"},
     };
 }
 

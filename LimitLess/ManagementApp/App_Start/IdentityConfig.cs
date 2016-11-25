@@ -11,6 +11,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ManagementApp.Models;
+using System.Net;
+using SendGrid;
+using System.Configuration;
 
 namespace ManagementApp
 {
@@ -18,8 +21,37 @@ namespace ManagementApp
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            return configSendGridasync(message);
+        }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress(
+                                "mr.lorak@gmail.com", "LimitLess Team");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            var credentials = new NetworkCredential(
+                       ConfigurationManager.AppSettings["mailAccount"],
+                       ConfigurationManager.AppSettings["mailPassword"]
+                       );
+
+            // Create a Web transport for sending email.
+           
+            var transportWeb = new SendGrid.Web(credentials);
+
+            // Send the email.
+            if (transportWeb != null)
+            {
+                return transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                return Task.FromResult(0);
+            }
         }
     }
 
@@ -80,11 +112,28 @@ namespace ManagementApp
             manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
-            {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                {
+                    manager.UserTokenProvider =
+              new DataProtectorTokenProvider<ApplicationUser>
+                 (dataProtectionProvider.Create("ASP.NET Identity"))
+              {
+                  TokenLifespan = TimeSpan.FromHours(3)
+              };
             }
             return manager;
+        }
+    }
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
         }
     }
 

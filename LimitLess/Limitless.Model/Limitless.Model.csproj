@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CalendarEvent.cs" />
     <Compile Include="Models\Classes.cs" />
     <Compile Include="Models\Hall.cs" />
     <Compile Include="Models\Order.cs" />

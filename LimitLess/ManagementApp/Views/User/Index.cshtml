@@ -56,9 +56,9 @@
                 </td>
 
                 <td>
-                    <a href="@Url.Action("Edit", "User")" class="btn btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span> @AdminResources.Edit</a> |
-                    <a href="@Url.Action("Details", "User")" class="btn btn-xs btn-link"><span class="glyphicon glyphicon-eye-open"></span> @AdminResources.Details</a> |
-                    <a href="@Url.Action("Delete", "User")" class="btn btn-xs btn-link text-danger"><span class="glyphicon glyphicon-remove"></span> @AdminResources.Delete</a> |
+                    <a href="@Url.Action("Edit", "User", new {id = item.Id})" class="btn btn-xs btn-link"><span class="glyphicon glyphicon-edit"></span> @AdminResources.Edit</a> |
+                    <a href="@Url.Action("Details", "User", new {id = item.Id})" class="btn btn-xs btn-link"><span class="glyphicon glyphicon-eye-open"></span> @AdminResources.Details</a> |
+                    <a href="@Url.Action("Delete", "User", new {id = item.Id})" class="btn btn-xs btn-link text-danger"><span class="glyphicon glyphicon-remove"></span> @AdminResources.Delete</a> |
 
             </td>
         </tr>

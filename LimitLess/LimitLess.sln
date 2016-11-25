@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless.Data", "Limitless
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementApp", "ManagementApp\ManagementApp.csproj", "{81DC6B64-E946-4F40-9B06-460B4B93F07A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{392069FA-C35C-4B80-97D7-3B0327C2663A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{81DC6B64-E946-4F40-9B06-460B4B93F07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81DC6B64-E946-4F40-9B06-460B4B93F07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81DC6B64-E946-4F40-9B06-460B4B93F07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

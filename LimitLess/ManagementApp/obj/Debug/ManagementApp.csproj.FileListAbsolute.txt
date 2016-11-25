@@ -90,3 +90,9 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\Microsoft.Owin
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\obj\Debug\ManagementApp.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\obj\Debug\ManagementApp.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\SendGrid.CSharp.HTTP.Client.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\SendGrid.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\System.Net.Http.Formatting.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\System.Net.Http.Formatting.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\SendGrid.SmtpApi.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\ManagementApp\bin\SendGridMail.dll

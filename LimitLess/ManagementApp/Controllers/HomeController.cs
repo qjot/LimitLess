@@ -10,6 +10,7 @@ using ManagementApp.Models;
 
 namespace ManagementApp.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private readonly IHallService hallService;
