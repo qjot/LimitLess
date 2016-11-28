@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using ManagementApp.Models;
+using Models;
 
 namespace ManagementApp.Controllers
 {
@@ -19,10 +20,12 @@ namespace ManagementApp.Controllers
     {
         private ApplicationUserManager _userManager;
 
-        public UserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public UserController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
-           
+            RoleManager = roleManager;
+
+
         }
 
         public UserController()
@@ -38,6 +41,19 @@ namespace ManagementApp.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        private ApplicationRoleManager _roleManager;
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -100,7 +116,19 @@ namespace ManagementApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            IEnumerable<String> userRoles =  UserManager.GetRoles(user.Id);
+
+            var editUserViewModel = new EditUserViewModel
+            {
+                user = user,
+                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+                {
+                    Selected = userRoles.Contains(x.Name),
+                    Text = x.Name,
+                    Value = x.Name
+                })
+            };
+            return View(editUserViewModel);
         }
 
         // POST: User/Edit/5
@@ -108,28 +136,45 @@ namespace ManagementApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,AccessFailedCount,UserName")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,AccessFailedCount,UserName")] EditUserViewModel editUserVM, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
-                
-                modifyOldUser(user);
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+
+                ApplicationUser oldUser = UserManager.FindById(editUserVM.user.Id);
+                oldUser.UserName = editUserVM.user.UserName;
+                oldUser.PhoneNumber = editUserVM.user.PhoneNumber;
+                oldUser.Email = editUserVM.user.Email;
+                oldUser.AccessFailedCount = editUserVM.user.AccessFailedCount;
+                var userRoles = UserManager.GetRoles(editUserVM.user.Id);
+
+                selectedRole = selectedRole ?? new string[] { };
+
+                var result = await UserManager.AddToRolesAsync(editUserVM.user.Id, selectedRole.Except(userRoles).ToArray<string>());
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+                result = await UserManager.RemoveFromRolesAsync(editUserVM.user.Id, userRoles.Except(selectedRole).ToArray<string>());
+
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", result.Errors.First());
+                    return View();
+                }
+
                 return RedirectToAction("Index");
             }
-            return View(user);
+            ModelState.AddModelError("", "Something failed.");
+            return View();
+       
         }
 
-        private void modifyOldUser(User user)
+        private void modifyOldUser(EditUserViewModel editUserVM)
         {
-            ApplicationUser oldUser = UserManager.FindById(user.Id);
-            oldUser.UserName = user.UserName;
-            oldUser.PhoneNumber = user.PhoneNumber;
-            oldUser.Roles = user.Roles;
-            oldUser.Email = user.Email;
-            oldUser.AccessFailedCount= user.AccessFailedCount;
-            throw new NotImplementedException();
+          
         }
 
         // GET: User/Delete/5

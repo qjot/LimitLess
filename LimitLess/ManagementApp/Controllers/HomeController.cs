@@ -14,12 +14,12 @@ namespace ManagementApp.Controllers
     public class HomeController : Controller
     {
         private readonly IHallService hallService;
-        private readonly ITimetableService timetableService;
+        private readonly IEventService EventService;
 
-        public HomeController(IHallService hallService, ITimetableService timetableService)
+        public HomeController(IHallService hallService, IEventService EventService)
         {
             this.hallService = hallService;
-            this.timetableService = timetableService;
+            this.EventService = EventService;
 
         }
 

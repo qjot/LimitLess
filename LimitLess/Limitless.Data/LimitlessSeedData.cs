@@ -13,7 +13,7 @@ namespace Limitless.Data
             protected override void Seed(LimitlessEntities context)
             {
             GetHall().ForEach(c => context.halls.Add(c));
-            GetTimetable().ForEach(g => context.timetables.Add(g));
+            GetEvent().ForEach(g => context.events.Add(g));
             GetClasses().ForEach(k => context.classeses.Add(k));
             GetOrderDetail().ForEach(x => context.orderDetails.Add(x));
                 context.Commit();
@@ -63,28 +63,26 @@ namespace Limitless.Data
             };
         }
 
-        private static List<Timetable> GetTimetable()
+        private static List<Event> GetEvent()
             {
-                return new List<Timetable>
+                return new List<Event>
             {
-             new Timetable
+             new Event
              {
                  capacity = 20,
-                 timetableID = 0,
-                 classesID = 0,
+                 eventId = 0,
                  //date = DateTime.Now,
-                 trainerID = 1,
-                 hallID = 0
+                 trainerId = 1,
+                 hallId = 0
              },
-             new Timetable
+             new Event
              {
 
                  capacity = 10,
-                 timetableID = 1,
-                 classesID = 1,
+                 eventId = 1,
                 // date = DateTime.Now,
-                 trainerID = 2,
-                 hallID = 1
+                 trainerId = 2,
+                 hallId= 1
              }
 
             };
@@ -96,7 +94,7 @@ namespace Limitless.Data
                 new Classes
                 {
                     name = "Fintess",
-                    classesId = 0,
+                    id = 0,
                     description = "Zajęcia fintess dla wszystkich",
                     last = "45"
                 }

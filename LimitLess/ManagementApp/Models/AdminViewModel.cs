@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Limitless.Model;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace IdentitySample.Models
+namespace Models
 {
     public class RoleViewModel
     {
@@ -14,13 +15,7 @@ namespace IdentitySample.Models
 
     public class EditUserViewModel
     {
-        public string Id { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
+        public User user { get; set; }
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 }

@@ -118,7 +118,7 @@
     <Compile Include="Cofiguration\HallConfiguration.cs" />
     <Compile Include="Cofiguration\OrderConfiguration.cs" />
     <Compile Include="Cofiguration\OrderDetailConfiguration.cs" />
-    <Compile Include="Cofiguration\TimetableConfiguration.cs" />
+    <Compile Include="Cofiguration\EventConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
@@ -133,7 +133,7 @@
     <Compile Include="Repositories\HallRepository.cs" />
     <Compile Include="Repositories\OrderDetailRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="Repositories\TimetableRepository.cs" />
+    <Compile Include="Repositories\EventRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\AdminResources.resx">

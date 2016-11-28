@@ -13,7 +13,7 @@ namespace Limitless.Data.Configuration
         public ClassesConfiguration()
         {
             ToTable("Classes");
-            Property(g => g.classesId).IsRequired();
+            Property(g => g.id).IsRequired();
             Property(g => g.name).IsRequired().HasMaxLength(50);
             Property(g => g.description).IsRequired().HasMaxLength(500);
 

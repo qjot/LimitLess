@@ -45,7 +45,7 @@
     <Compile Include="OrderDetailsService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimetableService.cs" />
+    <Compile Include="EventService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Limitless.Data\Limitless.Data.csproj">

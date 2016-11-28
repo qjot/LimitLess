@@ -32,7 +32,7 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(ClassesRepository).Assembly)
                .Where(t => t.Name.EndsWith("Repository"))
                .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TimetableRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(EventRepository).Assembly)
                .Where(t => t.Name.EndsWith("Repository"))
                .AsImplementedInterfaces().InstancePerRequest();
             // Services
@@ -42,7 +42,7 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(ClassesService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
-            builder.RegisterAssemblyTypes(typeof(TimetableService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(EventService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
             IContainer container = builder.Build();

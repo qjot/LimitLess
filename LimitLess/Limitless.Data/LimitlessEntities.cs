@@ -14,7 +14,7 @@ namespace Limitless.Data
         }
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
-        public DbSet<Timetable> timetables { get; set; }
+        public DbSet<Event> events { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
 
@@ -28,7 +28,7 @@ namespace Limitless.Data
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.Configurations.Add(new HallConfiguration());
-            //modelBuilder.Configurations.Add(new TimetableConfiguration());
+            //modelBuilder.Configurations.Add(new EventConfiguration());
             //modelBuilder.Configurations.Add(new ClassesConfiguration());
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
