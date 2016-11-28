@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Limitless.Model
 {
+    [Table("ClassesType")]
     public class ClassesType
     {
+        [Key]
         public int typeId { get; set; }
         public string name { get; set; }
         public string description { get; set; }

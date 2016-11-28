@@ -13,48 +13,48 @@ namespace Limitless.Web.Controllers
     public class HomeController : Controller
     {
         private readonly IHallService hallService;
-        private readonly ITimetableService timetableService;
+        private readonly IEventService EventService;
 
-        public HomeController(IHallService hallService, ITimetableService timetableService)
+        public HomeController(IHallService hallService, IEventService EventService)
         {
             this.hallService = hallService;
-            this.timetableService = timetableService;
+            this.EventService = EventService;
         }
 
-        public ActionResult Index()
-        {
-            IEnumerable<Hall> halls;
-            IEnumerable<Hall> timetables;
-            Timetable newTimetable = new Timetable
-            {
-                capacity = 20,
-                classesID = 0,
-                //date = DateTime.Now,
-                hallID = 1,
-                timetableID = 1,
-                trainerID = 1
+        //public ActionResult Index()
+        //{
+        //    IEnumerable<Hall> halls;
+        //    IEnumerable<Hall> Events;
+        //    Event newEvent = new Event
+        //    {
+        //        capacity = 20,
+        //        classesId = 0,
+        //        //date = DateTime.Now,
+        //        hallId = 1,
+        //        EventID = 1,
+        //        trainerID = 1
 
-            };
+        //    };
 
-            Hall newHall = new Hall
-            {   
-                maxCapacity = 20,
-                name = "Sala 1",
-                hallId = 0
-            };
-            hallService.CreateHall(newHall);
-            hallService.SaveHall();
-            halls = hallService.GetHalls();
-
-
-            timetableService.CreateTimetable(newTimetable);
-            timetableService.SaveTimetable();
+        //    Hall newHall = new Hall
+        //    {   
+        //        maxCapacity = 20,
+        //        name = "Sala 1",
+        //        hallId = 0
+        //    };
+        //    hallService.CreateHall(newHall);
+        //    hallService.SaveHall();
+        //    halls = hallService.GetHalls();
 
 
+        //    EventService.CreateEvent(newEvent);
+        //    EventService.SaveEvent();
 
-            ViewBag.Message = halls.FirstOrDefault().name;
-            return View();
-        }
+
+
+        //    ViewBag.Message = halls.FirstOrDefault().name;
+        //    return View();
+        //}
 
         public ActionResult About()
         {

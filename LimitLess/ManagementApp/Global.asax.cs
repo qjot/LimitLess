@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using LimitLess.Web.App_Start;
+using Limitless.Data;
 
 namespace ManagementApp
 {
@@ -13,6 +14,7 @@ namespace ManagementApp
     {
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer(new LimitlessSeedData());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

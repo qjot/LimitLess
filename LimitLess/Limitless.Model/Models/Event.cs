@@ -23,7 +23,7 @@ namespace Limitless.Model
         [ForeignKey("hallId")]
         public virtual Hall hall { get; set; }
 
-        public int trainerId { get; set; }
+        public string trainerId { get; set; }
         [Key]
         [ForeignKey("trainerId")]
         public virtual User trainer { get; set; }

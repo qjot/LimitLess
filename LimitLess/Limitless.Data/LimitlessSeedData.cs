@@ -8,7 +8,7 @@ using Limitless.Model;
 
 namespace Limitless.Data
 {
-    public class LimitlessSeedData : DropCreateDatabaseIfModelChanges<LimitlessEntities>
+    public class LimitlessSeedData : DropCreateDatabaseAlways<LimitlessEntities>
     {
             protected override void Seed(LimitlessEntities context)
             {
@@ -72,7 +72,7 @@ namespace Limitless.Data
                  capacity = 20,
                  eventId = 0,
                  //date = DateTime.Now,
-                 trainerId = 1,
+                 trainerId = "asdasdasdasd1",
                  hallId = 0
              },
              new Event
@@ -81,7 +81,7 @@ namespace Limitless.Data
                  capacity = 10,
                  eventId = 1,
                 // date = DateTime.Now,
-                 trainerId = 2,
+                 trainerId = "2",
                  hallId= 1
              }
 

@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Cofiguration\ClassesConfiguration.cs" />
     <Compile Include="Cofiguration\HallConfiguration.cs" />
+    <Compile Include="Cofiguration\MembershipConfiguration.cs" />
     <Compile Include="Cofiguration\OrderConfiguration.cs" />
     <Compile Include="Cofiguration\OrderDetailConfiguration.cs" />
     <Compile Include="Cofiguration\EventConfiguration.cs" />
@@ -128,9 +129,15 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="LimitlessEntities.cs" />
     <Compile Include="LimitlessSeedData.cs" />
+    <Compile Include="Migrations\201611282343212_Update LimitLess Database.cs" />
+    <Compile Include="Migrations\201611282343212_Update LimitLess Database.Designer.cs">
+      <DependentUpon>201611282343212_Update LimitLess Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClassesRepository.cs" />
     <Compile Include="Repositories\HallRepository.cs" />
+    <Compile Include="Repositories\MembershipRepository.cs" />
     <Compile Include="Repositories\OrderDetailRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
@@ -139,6 +146,9 @@
     <EmbeddedResource Include="App_GlobalResources\AdminResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611282343212_Update LimitLess Database.resx">
+      <DependentUpon>201611282343212_Update LimitLess Database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

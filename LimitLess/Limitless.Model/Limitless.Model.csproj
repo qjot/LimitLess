@@ -61,6 +61,7 @@
     <Compile Include="Models\Classes.cs" />
     <Compile Include="Models\ClassesType.cs" />
     <Compile Include="Models\Hall.cs" />
+    <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Event.cs" />

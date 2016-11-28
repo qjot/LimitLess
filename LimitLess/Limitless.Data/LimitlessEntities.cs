@@ -3,21 +3,23 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using Limitless.Data.Configuration;
 using Limitless.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using System.Configuration;
 namespace Limitless.Data
 {
     public class LimitlessEntities : DbContext
     {
-        public LimitlessEntities() : base("LimitlessEntities")
+        private static string connectionString =
+            @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
+        public LimitlessEntities() : base(connectionString)
         {
-            Database.SetInitializer<LimitlessEntities>(new DropCreateDatabaseIfModelChanges<LimitlessEntities>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>(connectionString));
         }
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
         public DbSet<Event> events { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
-
+        public DbSet<Membership> memberships { get; set; }
 
         public virtual void Commit()
         {
@@ -36,6 +38,8 @@ namespace Limitless.Data
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
+
+      
 
         public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
     }
