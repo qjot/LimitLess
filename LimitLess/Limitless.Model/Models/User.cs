@@ -14,21 +14,19 @@ namespace Limitless.Model
     {
         [DisplayName("Name")]
        private string name { get; set; }
-        [DisplayName("Phone")]
-        public string phoneNumber { get; set; }
-        //[DisplayName("Birthday")]
-        //public DateTime? birthday { get; set; }
-        //[DisplayName("Join Date")]
-        //public DateTime? joinDate { get; set; }
-        //[DisplayName("Renewal Date")]
-        //public DateTime? renewalDate { get; set; }
-        //[DisplayName("Last Payment")]
-        //public DateTime? lastPayment { get; set; }
+        [DisplayName("Birthday")]
+        public DateTime? birthday { get; set; }
+        [DisplayName("Join Date")]
+        public DateTime? joinDate { get; set; }
+        [DisplayName("Renewal Date")]
+        public DateTime? renewalDate { get; set; }
+        [DisplayName("Last Payment")]
+        public DateTime? lastPayment { get; set; }
 
-        //public int membershipId { get; set; }
-        //[Key]
-        //[ForeignKey("membershipId")]
-        //public virtual Membership membership { get; set; }
+        public int? membershipId { get; set; }
+        [Key]
+        [ForeignKey("membershipId")]
+        public virtual Membership membership { get; set; }
 
 
     }
