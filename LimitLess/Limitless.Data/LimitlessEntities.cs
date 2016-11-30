@@ -12,7 +12,8 @@ namespace Limitless.Data
             @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
         public LimitlessEntities() : base(connectionString)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>(connectionString));
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>(connectionString));
+            Database.SetInitializer<LimitlessEntities>(new CreateDatabaseIfNotExists<LimitlessEntities>());
         }
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
@@ -20,7 +21,7 @@ namespace Limitless.Data
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
         public DbSet<Membership> memberships { get; set; }
-
+        public DbSet<User> users { get; set; }
         public virtual void Commit()
         {
             base.SaveChanges();
@@ -32,16 +33,17 @@ namespace Limitless.Data
             //modelBuilder.Configurations.Add(new HallConfiguration());
             //modelBuilder.Configurations.Add(new EventConfiguration());
             //modelBuilder.Configurations.Add(new ClassesConfiguration());
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("userClaims");
+            modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo");
+            modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }
 
       
 
-        public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
+        //public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
     }
 
 }

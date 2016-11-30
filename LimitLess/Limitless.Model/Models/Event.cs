@@ -26,8 +26,8 @@ namespace Limitless.Model
         public string trainerId { get; set; }
         [Key]
         [ForeignKey("trainerId")]
-        public virtual User trainer { get; set; }
+        public virtual ApplicationUser trainer { get; set; }
 
-        public virtual ICollection<User> members { get; set; }
+        public virtual ICollection<ApplicationUser> members { get; set; }
     }
 }

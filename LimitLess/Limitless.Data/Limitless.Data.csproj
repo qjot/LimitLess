@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201611290034167_Update AspNetUsers.Designer.cs">
       <DependentUpon>201611290034167_Update AspNetUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611291804279_Set AspNetUser table as default to foreign key.cs" />
+    <Compile Include="Migrations\201611291804279_Set AspNetUser table as default to foreign key.Designer.cs">
+      <DependentUpon>201611291804279_Set AspNetUser table as default to foreign key.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClassesRepository.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611290034167_Update AspNetUsers.resx">
       <DependentUpon>201611290034167_Update AspNetUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611291804279_Set AspNetUser table as default to foreign key.resx">
+      <DependentUpon>201611291804279_Set AspNetUser table as default to foreign key.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

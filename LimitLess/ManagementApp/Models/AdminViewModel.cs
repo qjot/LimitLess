@@ -15,7 +15,7 @@ namespace Models
 
     public class EditUserViewModel
     {
-        public User user { get; set; }
+        public ApplicationUser user { get; set; }
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 }

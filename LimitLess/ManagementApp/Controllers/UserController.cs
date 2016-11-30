@@ -73,7 +73,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            Limitless.Model.ApplicationUser user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -92,7 +92,7 @@ namespace ManagementApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] User user)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] Limitless.Model.ApplicationUser user)
         {
             if (ModelState.IsValid)
             {
@@ -141,7 +141,7 @@ namespace ManagementApp.Controllers
             if (ModelState.IsValid)
             {
 
-                ApplicationUser oldUser = UserManager.FindById(editUserVM.user.Id);
+                Models.ApplicationUser oldUser = UserManager.FindById(editUserVM.user.Id);
                 oldUser.UserName = editUserVM.user.UserName;
                 oldUser.PhoneNumber = editUserVM.user.PhoneNumber;
                 oldUser.Email = editUserVM.user.Email;
@@ -184,7 +184,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            Limitless.Model.ApplicationUser user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -197,7 +197,7 @@ namespace ManagementApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            User user = db.Users.Find(id);
+            Limitless.Model.ApplicationUser user = db.Users.Find(id);
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
