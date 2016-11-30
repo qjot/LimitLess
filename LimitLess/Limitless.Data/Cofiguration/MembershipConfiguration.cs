@@ -12,7 +12,7 @@ namespace Limitless.Data.Cofiguration
     {
         public MembershipConfiguration()
         {
-            ToTable("Classes");
+            ToTable("Membership");
             Property(g => g.membershipId).IsRequired();
             Property(g => g.price).IsRequired();
             Property(g => g.title).IsRequired().HasMaxLength(500);

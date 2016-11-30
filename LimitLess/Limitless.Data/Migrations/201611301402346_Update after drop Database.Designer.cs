@@ -7,13 +7,13 @@ namespace Limitless.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SetAspNetUsertableasdefaulttoforeignkey : IMigrationMetadata
+    public sealed partial class UpdateafterdropDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SetAspNetUsertableasdefaulttoforeignkey));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateafterdropDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611291804279_Set AspNetUser table as default to foreign key"; }
+            get { return "201611301402346_Update after drop Database"; }
         }
         
         string IMigrationMetadata.Source

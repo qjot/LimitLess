@@ -73,7 +73,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Limitless.Model.ApplicationUser user = db.Users.Find(id);
+            User user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -92,11 +92,11 @@ namespace ManagementApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] Limitless.Model.ApplicationUser user)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] Limitless.Model.User user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -140,8 +140,8 @@ namespace ManagementApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                Models.ApplicationUser oldUser = UserManager.FindById(editUserVM.user.Id);
+                //TODO brak modelu ? 
+                User oldUser = UserManager.FindById(editUserVM.user.Id);
                 oldUser.UserName = editUserVM.user.UserName;
                 oldUser.PhoneNumber = editUserVM.user.PhoneNumber;
                 oldUser.Email = editUserVM.user.Email;
@@ -184,7 +184,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Limitless.Model.ApplicationUser user = db.Users.Find(id);
+            User user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -197,8 +197,8 @@ namespace ManagementApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Limitless.Model.ApplicationUser user = db.Users.Find(id);
-            db.Users.Remove(user);
+            User user = db.users.Find(id);
+            db.users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

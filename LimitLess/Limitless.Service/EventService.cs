@@ -11,7 +11,7 @@ namespace Limitless.Service
 {
     public interface IEventService
     {
-        //IEnumerable<Event> GetCategories(string name = null);
+        IEnumerable<Event> GetEvents(string name = null);
         Event GetEvent(int id);
        // Event GetEvent(string name);
         void CreateEvent(Event Event);
@@ -30,13 +30,13 @@ namespace Limitless.Service
 
         #region IEventService Members
 
-        //public IEnumerable<Event> GetCategories(string name = null)
-        //{
-        //    if (string.IsNullOrEmpty(name))
-        //        return EventsRepository.GetAll();
-        //    else
-        //        return EventsRepository.GetAll().Where(c => c.name == name);
-        //}
+        public IEnumerable<Event> GetEvents(string name = null)
+        {
+            if (string.IsNullOrEmpty(name))
+                return EventsRepository.GetAll();
+            else
+                return EventsRepository.GetAll();
+        }
 
         public Event GetEvent(int id)
         {

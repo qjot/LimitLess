@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Limitless.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace ManagementApp.Models
 {
@@ -23,7 +24,7 @@ namespace ManagementApp.Models
         public static string connectionString =
             @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
         public ApplicationDbContext()
-            : base("LimitlessEntities", throwIfV1Schema: false)
+            : base("connectionString", throwIfV1Schema: false)
         {
         }
 
@@ -31,5 +32,20 @@ namespace ManagementApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Configurations.Add(new HallConfiguration());
+            //modelBuilder.Configurations.Add(new EventConfiguration());
+            //modelBuilder.Configurations.Add(new ClassesConfiguration());
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo");
+            modelBuilder.Entity<User>().ToTable("Users", "dbo");
+        }
+
     }
 }

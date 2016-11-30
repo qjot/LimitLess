@@ -4,6 +4,8 @@ using Limitless.Data.Configuration;
 using Limitless.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Configuration;
+using Limitless.Data.Cofiguration;
+
 namespace Limitless.Data
 {
     public class LimitlessEntities : DbContext
@@ -13,7 +15,8 @@ namespace Limitless.Data
         public LimitlessEntities() : base(connectionString)
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>(connectionString));
-            Database.SetInitializer<LimitlessEntities>(new CreateDatabaseIfNotExists<LimitlessEntities>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>("connectionString"));
+
         }
         public DbSet<Hall> halls { get; set; }
         public DbSet<Classes> classeses { get; set; }
@@ -30,9 +33,12 @@ namespace Limitless.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.Add(new HallConfiguration());
-            //modelBuilder.Configurations.Add(new EventConfiguration());
-            //modelBuilder.Configurations.Add(new ClassesConfiguration());
+            modelBuilder.Configurations.Add(new HallConfiguration());
+            modelBuilder.Configurations.Add(new EventConfiguration());
+            modelBuilder.Configurations.Add(new ClassesConfiguration());
+            modelBuilder.Configurations.Add(new MembershipConfiguration());
+            modelBuilder.Configurations.Add(new OrderConfiguration());
+            modelBuilder.Configurations.Add(new OrderDetailConfiguration());
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
@@ -41,7 +47,9 @@ namespace Limitless.Data
             modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }
 
-      
+        public System.Data.Entity.DbSet<Limitless.Model.ClassesType> ClassesTypes { get; set; }
+
+
 
         //public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
     }

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Limitless.Model.Event>
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/views/calendarViewScript.js")"></script>
+}
+<script type="text/javascript">
+
+    $(function () {
+        console.log("jestem");
+        $("#calendar").fullCalendar({
+            header: {
+                left: "prev, next today",
+                center: "title",
+                right: "agendaWeek"
+            },
+            theme: true,
+            defaultView: "agendaWeek",
+            editable: false,
+            selectable: true,
+            slotMinutes: 15
+            //events: "/home/GetEvents/"
+        });
+    });
+
+
+</script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+ViewBag.Message
+
+<h2>Index</h2>
+
+<div id="calendar"></div>

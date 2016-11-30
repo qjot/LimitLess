@@ -69,6 +69,4 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitle
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.App_GlobalResources.AdminResources.resources
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csproj.GenerateResource.Cache
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateLimitLessDatabase.resources
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateUserModel.resources
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateAspNetUsers.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateafterdropDatabase.resources

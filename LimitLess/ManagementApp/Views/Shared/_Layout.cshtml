@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - LimitLess Managament App</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fullcalendarcss")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/fullcalendarjs")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
 
@@ -42,8 +46,5 @@
     </footer>
 </div>
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
 </body>
 </html>

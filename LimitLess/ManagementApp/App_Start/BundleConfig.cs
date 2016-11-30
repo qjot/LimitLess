@@ -26,6 +26,17 @@ namespace ManagementApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            //Calendar css file
+            bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
+                     "~/Content/themes/base/jquery.ui.all.css",
+                     "~/Content/fullcalendar.css"));
+
+            //Calendar Script file
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
+                        "~/Scripts/lib/moment.min.js",
+                      "~/Scripts/jquery-ui-1.8.11.min.js",
+                      "~/Scripts/fullcalendar.min.js"));
         }
     }
 }

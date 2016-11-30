@@ -1,0 +1,72 @@
+﻿@model Limitless.Model.Event
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.classes.last)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classes.last)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hall.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hall.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
