@@ -16,6 +16,7 @@ namespace Limitless.Service
        // Event GetEvent(string name);
         void CreateEvent(Event Event);
         void SaveEvent();
+        void UpdateEvent(Event Event);
     }
     public class EventService : IEventService
     {
@@ -53,10 +54,17 @@ namespace Limitless.Service
         public void CreateEvent(Event Event)
         {
             EventsRepository.Add(Event);
+            unitOfWork.Commit();
         }
 
         public void SaveEvent()
         {
+            unitOfWork.Commit();
+        }
+
+        public void UpdateEvent(Event Event)
+        {
+            EventsRepository.Update(Event);
             unitOfWork.Commit();
         }
 

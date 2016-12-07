@@ -11,10 +11,9 @@ namespace Limitless.Service
 {
     public interface IClassesService
     {
-        IEnumerable<Classes> GetCategories(string name = null);
-        Classes GetClasses(int id);
-        Classes GetClasses(string name);
-        void CreateClasses(Classes Classes);
+        IEnumerable<ClassesType> GetClasses(string name = null);
+        ClassesType GetClasses(int id);
+        void CreateClasses(ClassesType Classes);
         void SaveClasses();
     }
     public class ClassesService : IClassesService
@@ -30,7 +29,7 @@ namespace Limitless.Service
 
         #region IClassesService Members
 
-        public IEnumerable<Classes> GetCategories(string name = null)
+        public IEnumerable<ClassesType> GetClasses(string name = null)
         {
             if (string.IsNullOrEmpty(name))
                 return ClassessRepository.GetAll();
@@ -38,19 +37,14 @@ namespace Limitless.Service
                 return ClassessRepository.GetAll().Where(c => c.name == name);
         }
 
-        public Classes GetClasses(int id)
+        public ClassesType GetClasses(int id)
         {
             var Classes = ClassessRepository.GetById(id);
             return Classes;
         }
+        
 
-        public Classes GetClasses(string name)
-        {
-            var Classes = ClassessRepository.GetClassesByName(name);
-            return Classes;
-        }
-
-        public void CreateClasses(Classes Classes)
+        public void CreateClasses(ClassesType Classes)
         {
             ClassessRepository.Add(Classes);
         }

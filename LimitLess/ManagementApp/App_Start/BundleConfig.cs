@@ -8,8 +8,17 @@ namespace ManagementApp
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                       "~/Scripts/jquery-{version}.js",
+                       // needed for drag/move events in fullcalendar
+                       "~/Scripts/jquery-{version}.js",
+                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/lib/moment.min.js"
+                       ));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.1.1.js",
+                        "~/Scripts/jquery-ui-1.8.12.js",
+                         "~/Scripts/lib/moment.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -19,7 +28,7 @@ namespace ManagementApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new StyleBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
@@ -28,15 +37,16 @@ namespace ManagementApp
                       "~/Content/site.css"));
             //Calendar css file
             bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
-                     "~/Content/themes/base/jquery.ui.all.css",
-                     "~/Content/fullcalendar.css"));
+                     //"~/Content/themes/base/jquery.ui.all.css",
+                     "~/Content/fullcalendar.min.css"
+                     //"~/Script/fullcalendar.print.css"
+                     ));
 
             //Calendar Script file
 
             bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
-                        "~/Scripts/lib/moment.min.js",
-                      "~/Scripts/jquery-ui-1.8.11.min.js",
-                      "~/Scripts/fullcalendar.min.js"));
+                     "~/Scripts/fullcalendar.js",
+                      "~/Scripts/views/calendarViewScript.js"));
         }
     }
 }

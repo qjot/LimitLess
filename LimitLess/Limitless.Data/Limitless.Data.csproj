@@ -133,6 +133,10 @@
     <Compile Include="Migrations\201611301402346_Update after drop Database.Designer.cs">
       <DependentUpon>201611301402346_Update after drop Database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612011431594_Update event.cs" />
+    <Compile Include="Migrations\201612011431594_Update event.Designer.cs">
+      <DependentUpon>201612011431594_Update event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClassesRepository.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611301402346_Update after drop Database.resx">
       <DependentUpon>201611301402346_Update after drop Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612011431594_Update event.resx">
+      <DependentUpon>201612011431594_Update event.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

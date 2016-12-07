@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - LimitLess Managament App</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/fullcalendarcss")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/fullcalendarjs")
-    @RenderSection("scripts", required: false)
+
+  <link href="~/Content/fullcalendar.min.css" rel="stylesheet"/>
+    <script src="~/Scripts/fullcalendar.js"></script>
+    
+    
+   
 </head>
 <body>
-
+   
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -45,6 +48,6 @@
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
 </div>
-
+    @RenderSection("scripts", required: false)
 </body>
 </html>

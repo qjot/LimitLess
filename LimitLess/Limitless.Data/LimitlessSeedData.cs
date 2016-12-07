@@ -12,11 +12,11 @@ namespace Limitless.Data
     {
             protected override void Seed(LimitlessEntities context)
             {
-            GetHall().ForEach(c => context.halls.Add(c));
-            GetEvent().ForEach(g => context.events.Add(g));
-            GetClasses().ForEach(k => context.classeses.Add(k));
-            GetOrderDetail().ForEach(x => context.orderDetails.Add(x));
-                context.Commit();
+            //GetHall().ForEach(c => context.halls.Add(c));
+            //GetEvent().ForEach(g => context.events.Add(g));
+            //GetClasses().ForEach(k => context.classeses.Add(k));
+            //GetOrderDetail().ForEach(x => context.orderDetails.Add(x));
+                //context.Commit();
             }
 
      
@@ -87,18 +87,18 @@ namespace Limitless.Data
 
             };
             }
-        private static List<Classes> GetClasses()
-        {
-            return new List<Classes>
-            {
-                new Classes
-                {
-                    name = "Fintess",
-                    id = 0,
-                    description = "Zajęcia fintess dla wszystkich",
-                    last = "45"
-                }
-            };
-        }
+        //private static List<Classes> GetClasses()
+        //{
+        //    return new List<Classes>
+        //    {
+        //        new Classes
+        //        {
+        //            name = "Fintess",
+        //            id = 0,
+        //            description = "Zajęcia fintess dla wszystkich",
+        //            last = "45"
+        //        }
+        //    };
+        //}
     }
     }

@@ -9,29 +9,29 @@ using Limitless.Model;
 
 namespace Limitless.Data.Repositories
 {
-    public class ClassesRepository : RepositoryBase<Classes>, IClassesRepository
+    public class ClassesRepository : RepositoryBase<ClassesType>, IClassesRepository
     {
         public ClassesRepository(IDbFactory dbFactory)
             : base(dbFactory)
         {
         }
 
-        public Classes GetClassesByName(string classesName)
+        public ClassesType GetClassesById(int id)
         {
-            var category = this.DbContext.classeses.FirstOrDefault(c => c.name == classesName);
+            var classes = this.DbContext.classesesType.FirstOrDefault(c => c.classesTypeId == id);
 
-            return category;
+            return classes;
         }
 
-        public override void Update(Classes entity)
+        public override void Update(ClassesType entity)
         {
             
             base.Update(entity);
         }
     }
 
-    public interface IClassesRepository : IRepository<Classes>
+    public interface IClassesRepository : IRepository<ClassesType>
     {
-        Classes GetClassesByName(string classesName);
+        ClassesType GetClassesById(int id);
     }
 }

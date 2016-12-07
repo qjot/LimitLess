@@ -9,6 +9,10 @@ namespace Limitless.Data.Repositories
             : base(dbFactory)
         {
         }
+        public override void Update(Event entity)
+        {
+            base.Update(entity);
+        }
     }
 
     public interface IEventRepository : IRepository<Event>

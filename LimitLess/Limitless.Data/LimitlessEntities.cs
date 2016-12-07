@@ -19,7 +19,7 @@ namespace Limitless.Data
 
         }
         public DbSet<Hall> halls { get; set; }
-        public DbSet<Classes> classeses { get; set; }
+        public DbSet<ClassesType> classesesType { get; set; }
         public DbSet<Event> events { get; set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
@@ -47,8 +47,7 @@ namespace Limitless.Data
             modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }
 
-        public System.Data.Entity.DbSet<Limitless.Model.ClassesType> ClassesTypes { get; set; }
-
+        
 
 
         //public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
