@@ -18,7 +18,8 @@ namespace ManagementApp
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.1.1.js",
                         "~/Scripts/jquery-ui-1.8.12.js",
-                         "~/Scripts/lib/moment.min.js"));
+                         "~/Scripts/lib/moment.min.js"
+                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -28,13 +29,14 @@ namespace ManagementApp
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css"
+                     ));
             //Calendar css file
             bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
                      //"~/Content/themes/base/jquery.ui.all.css",
@@ -46,7 +48,8 @@ namespace ManagementApp
 
             bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
                      "~/Scripts/fullcalendar.js",
-                      "~/Scripts/views/calendarViewScript.js"));
+                      "~/Scripts/views/calendarViewScript.js",
+                      "~/Scripts/locale/en-gb.js"));
         }
     }
 }

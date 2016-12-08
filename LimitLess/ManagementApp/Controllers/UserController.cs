@@ -111,6 +111,7 @@ namespace ManagementApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             var user = UserManager.FindById(id);
             if (user == null)
             {

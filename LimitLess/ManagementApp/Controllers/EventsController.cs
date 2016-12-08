@@ -11,6 +11,7 @@ using Limitless.Data;
 using Limitless.Model;
 using Limitless.Service;
 using ManagementApp.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 
@@ -48,26 +49,29 @@ namespace ManagementApp.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            IEnumerable<Event> eventList = new List<Event>();
-
-            //Event newEvent = new Event
-            //{
-            //    eventId = 1,
-            //    classesTypeId = 1,
-            //    hallId= 1,
-            //    start = DateTime.Now.AddDays(2),
-            //    end= DateTime.Now.AddDays(3),
-            //    date = DateTime.Now,
-            //    capacity= 20,
-            //    trainerId = "172ef3fd-127f-407d-9b13-129dc6a0333d",
-            //};
-            //eventService.CreateEvent(newEvent);
-            //eventService.SaveEvent();
-            //eventList.Add(newEvent);
-            eventList = eventService.GetEvents();
-            List<CalendarEventModelView> calendarEvenList = new List<CalendarEventModelView>();
-            parseDatabaseEventToModelView(eventList, calendarEvenList);
-            return View(eventService.GetEvents());
+            
+            Dictionary<string, string> trainers = new Dictionary<string, string>();
+            Dictionary<int, string> classes = new Dictionary<int, string>();
+            Dictionary<int, string> halls = new Dictionary<int, string>();
+            foreach (var item in classesSerice.GetClasses())
+            {
+                classes.Add(item.classesTypeId, item.name);
+            }
+            foreach (var item in hallService.GetHalls())
+            {
+                halls.Add(item.hallId, item.name);
+            }
+            foreach (var item in UserManager.Users)
+            {
+                trainers.Add(item.Id, item.UserName);
+            }
+            EventViewModel avialableDataForNewEvent = new EventViewModel
+            {
+                trainerDictionary = trainers,
+                classesTypeDictionary = classes,
+                hallDictionary = halls
+            };
+            return View(avialableDataForNewEvent);
         }
 
         public JsonResult GetEvents(string start, string end)
@@ -89,42 +93,55 @@ namespace ManagementApp.Controllers
         public void UpdateEvent(int id, string NewEventStart, string NewEventEnd)
         {
             Event oldEvent = eventService.GetEvent(id);
-            DateTime DateTimeStart = DateTime.Parse(NewEventStart, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
-            DateTime DateTimeEnd = DateTime.Parse(NewEventEnd, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
+            DateTime DateTimeStart = DateTime.Parse(NewEventStart, null, DateTimeStyles.RoundtripKind); // and convert offset to localtime
+            DateTime DateTimeEnd = DateTime.Parse(NewEventEnd, null, DateTimeStyles.RoundtripKind); // and convert offset to localtime
             oldEvent.start = DateTimeStart;
             oldEvent.end = DateTimeEnd;
             eventService.UpdateEvent(oldEvent);
         }
 
-        public bool SaveEvent(string Title, string NewEventDate, string NewEventTime, string NewEventDuration)
+        public bool SaveEvent(UpdateEventModelView newEventMV)
         {
-            var date = DateTime.ParseExact(NewEventDate + " " + NewEventTime, "dd/MM/yyyy HH:mm",
-                CultureInfo.InvariantCulture);
-            try
-            {
-                Event newEvent = new Event
-                {
-                    start = date,
-                    trainerId = "172ef3fd-127f-407d-9b13-129dc6a0333d",
-                    classesTypeId = 1,
-                    hallId = 1,
-                    end = date.AddHours(1.0),
-                };
-                eventService.CreateEvent(newEvent);
-                
-            }
-            catch (Exception)
+            string eventDate = newEventMV.newEventDate + " " + newEventMV.newEventTime;
+            var date = DateTime.Parse(eventDate, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
+            //try
+            //{
+                double addHours;
+            if (Double.TryParse(newEventMV.newEventDuration, out addHours))
             {
                 return false;
             }
+                Event newEvent = new Event
+                {
+                    date = DateTime.Now,
+                    start = date,
+                    trainerId = newEventMV.trainerId,
+                    classesTypeId = newEventMV.classesTypeId,
+                    hallId = newEventMV.hallId,
+                    end = date.AddHours(addHours/60),
+                };
+                eventService.CreateEvent(newEvent);
+    //    }
+    //        catch (Exception e)
+    //        {
+                
+    //            return false;
+    //}
             return true;
 
         }
 
         private void parseDatabaseEventToModelView(IEnumerable<Event> eventList, List<CalendarEventModelView> calendarEvenList)
         {
+            
             foreach (var item in eventList)
             {
+                User trainer = UserManager.FindById(item.trainerId);
+                //item.trainer = trainer;
+                //eventService.UpdateEvent(item);
+                //ICollection<User> kolekcja = new List<User>();
+                //kolekcja.Add(trainer);
+                //item.members = kolekcja;
                 ClassesType currentClasses = classesSerice.GetClasses(item.classesTypeId.GetValueOrDefault());
                 calendarEvenList.Add(new CalendarEventModelView
                 {
@@ -135,10 +152,15 @@ namespace ManagementApp.Controllers
                     allDay = item.allDay,
                     capacity = item.capacity,
                     date = item.date.ToString("s"),
-                    title = currentClasses.name
+                    title = currentClasses.name,
+                    hallName = item.hall.name,
+                    trainerName = trainer.UserName,
+                    usersQuantity = 1
                 });
             }
         }
+
+        
 
         //public ActionResult GetEvents(double start, double end)
         //{

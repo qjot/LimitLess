@@ -5,17 +5,17 @@ $(function () {
         header: {
             left: "prev, next today",
             center: "title",
-            right: "month, agendaWeek, agendaDay"
+            right: "agendaWeek, agendaDay"
         },
         //theme: true,
+        allDaySlot: false,
+        axisFormat: "H(:mm)",
+        minTime: "07:00:00",
+        maxTime: "22:00:00",
         defaultView: "agendaWeek",
         editable: true,
         slotMinutes: 15,
-        locale: "pl",
-        //aspectRatio: 1.8,
-        //scrollTime: "08:00",
-        //timezone: "local",
-       // droppable: true,
+        locale: "en-gb",
         events: "/Events/GetEvents/",
         eventClick: function (calEvent, jsEvent, view) {
                 alert("You clicked on event id: " + calEvent.id
@@ -44,10 +44,18 @@ $(function () {
             },
             dayClick: function (date, allDay, jsEvent, view) {
                 $("#eventTitle").val("");
-                $("#eventDate").val(moment(date,'dd/MM/YY'));
-                $("#eventTime").val(moment(date, 'HH:mm'));
+                $("#eventDate").val(moment(date,"dd/MM/YY").format("L"));
+                $("#eventTime").val(moment(date, "HH:mm").format("LT"));
                 ShowEventPopup(date);
+            },
+            eventRender: function (event, element) {
+                element.find(".fc-title").append("<br/>" + event.trainerName +
+                "<br/>" + event.hallName +
+                "<br/>" + event.capacity 
+                    );
+
             }
+            
 
     });
 
@@ -60,12 +68,15 @@ $(function () {
     $("#btnPopupSave").click(function () {
 
         $("#popupEventForm").hide();
-
+        
         var dataRow = {
-            "Title": $("#eventTitle").val(),
-            "NewEventDate": $("#eventDate").val(),
-            "NewEventTime": $("#eventTime").val(),
-            "NewEventDuration": $("#eventDuration").val()
+            "title": $("#eventTitle").val(),
+            "newEventDate": $("#eventDate").val(),
+            "newEventTime": $("#eventTime").val(),
+            "newEventDuration": $("#eventDuration").val(),
+            "trainerId": $("#trainerSelectable").val(),
+            "classesTypeId": $("#classesSelectable").val(),
+            "hallId": $("#hallSelectable").val(),
         }
 
         ClearPopupFormValues();
@@ -88,7 +99,7 @@ $(function () {
 
     function ShowEventPopup(date) {
         ClearPopupFormValues();
-        $("#popupEventForm").show();
+        $("#popupEventForm").modal("show");
         $("#eventTitle").focus();
     }
 
