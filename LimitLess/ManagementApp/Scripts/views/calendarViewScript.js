@@ -9,7 +9,7 @@ $(function () {
         },
         //theme: true,
         allDaySlot: false,
-        axisFormat: "H(:mm)",
+        axisFormat: "H:MM",
         minTime: "07:00:00",
         maxTime: "22:00:00",
         defaultView: "agendaWeek",
@@ -17,11 +17,16 @@ $(function () {
         slotMinutes: 15,
         locale: "en-gb",
         events: "/Events/GetEvents/",
-        eventClick: function (calEvent, jsEvent, view) {
-                alert("You clicked on event id: " + calEvent.id
-                    + "\nDescription: " + calEvent.description
-                    + "\nAnd the title is: " + calEvent.title);
-
+        eventClick: function (event, calEvent, jsEvent, view) {
+            ClearEventInfoPopup();
+            $("#classesType").text(event.title);
+            $("#classesDescription").text(event.description);
+            $("#startSpan").text(event.start);
+            $("#lastSpan").text(event.end);
+            $("#hallSpan").text(event.hallName);
+            $("#availableSpan").text(event.capacity);
+            $("#eventIdSpan").text(event.id);
+            showEventInfoPopUp();
             },
 
             eventDrop: function (event, dayDelta, minuteDelta, allDay, revertFunc) {
@@ -97,6 +102,19 @@ $(function () {
         });
     });
 
+    $("#deleteEventButton").click(function () {
+
+        if (confirm("Do You want to delete event permanently?")) {
+            //$("#popUpEventInfo").hide();
+            DeleteEvent($("#eventIdSpan").text());
+        }
+    });
+
+
+    function showEventInfoPopUp() {
+        
+        $("#popUpEventInfo").modal("show");
+    }
     function ShowEventPopup(date) {
         ClearPopupFormValues();
         $("#popupEventForm").modal("show");
@@ -108,6 +126,14 @@ $(function () {
         $("#eventTitle").val("");
         $("#eventDateTime").val("");
         $("#eventDuration").val("");
+    }
+    function ClearEventInfoPopup() {
+        $("#classesType").val("");
+        $("#classesDescription").val("");
+        $("#startSpan").val("");
+        $("#lastSpan").val("");
+        $("#hallSpan").val("");
+        $("#availableSpan").val("");
     }
 
     function UpdateEvent(EventID, EventStart, EventEnd) {
@@ -124,6 +150,26 @@ $(function () {
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(dataRow)
+        });
+    }
+    function DeleteEvent(eventId) {
+        $("#popUpEventInfo").modal("hide");
+        var dataRow = {
+            "eventId": eventId
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Events/DeleteEvent",
+            data: dataRow,
+            success: function (response) {
+                if (response == "True") {
+                    $("#calendar").fullCalendar("refetchEvents");
+                    alert("Event Deleted!");
+                }
+                else {
+                    alert("Error, could not delete event!");
+                }
+            }
         });
     }
 });

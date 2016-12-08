@@ -82,3 +82,29 @@
     </div>
 </div>
 
+<div id="popUpEventInfo" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Event info</h4>
+            </div>
+            <div class="modal-body">
+                <h1 id="classesType"></h1>
+                <p id="classesDescription"></p>
+                <p>Date: <span id="startSpan"></span></p>
+                <p>Last: <span id="lastSpan"></span></p>
+                <p>Hall: <span id="hallSpan"></span></p>
+                <p>Available: <span id="availableSpan"></span></p>
+                <p>Id: <span id="eventIdSpan"></span></p>
+
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button  id="deleteEventButton"type="button" class="btn btn-primary">Delete</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -17,6 +17,7 @@ namespace Limitless.Service
         void CreateEvent(Event Event);
         void SaveEvent();
         void UpdateEvent(Event Event);
+        bool DeleteEvent(Event Event);
     }
     public class EventService : IEventService
     {
@@ -68,6 +69,19 @@ namespace Limitless.Service
             unitOfWork.Commit();
         }
 
+        public bool DeleteEvent(Event eventToDelete)
+        {
+            try
+            {
+                EventsRepository.Delete(eventToDelete);
+                unitOfWork.Commit();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
         #endregion
     }
 }

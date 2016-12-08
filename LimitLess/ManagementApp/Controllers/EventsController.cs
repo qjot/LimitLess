@@ -103,11 +103,11 @@ namespace ManagementApp.Controllers
         public bool SaveEvent(UpdateEventModelView newEventMV)
         {
             string eventDate = newEventMV.newEventDate + " " + newEventMV.newEventTime;
-            var date = DateTime.Parse(eventDate, null, DateTimeStyles.RoundtripKind).ToLocalTime(); // and convert offset to localtime
+            var date = DateTime.Parse(eventDate, null, DateTimeStyles.RoundtripKind); // and convert offset to localtime
             //try
             //{
                 double addHours;
-            if (Double.TryParse(newEventMV.newEventDuration, out addHours))
+            if (!Double.TryParse(newEventMV.newEventDuration, out addHours))
             {
                 return false;
             }
@@ -131,17 +131,26 @@ namespace ManagementApp.Controllers
 
         }
 
+        public bool DeleteEvent(int eventId)
+        {
+            try
+            {
+                Event eventToDelete = eventService.GetEvent(eventId);
+                eventService.DeleteEvent(eventToDelete);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void parseDatabaseEventToModelView(IEnumerable<Event> eventList, List<CalendarEventModelView> calendarEvenList)
         {
             
             foreach (var item in eventList)
             {
                 User trainer = UserManager.FindById(item.trainerId);
-                //item.trainer = trainer;
-                //eventService.UpdateEvent(item);
-                //ICollection<User> kolekcja = new List<User>();
-                //kolekcja.Add(trainer);
-                //item.members = kolekcja;
                 ClassesType currentClasses = classesSerice.GetClasses(item.classesTypeId.GetValueOrDefault());
                 calendarEvenList.Add(new CalendarEventModelView
                 {
@@ -160,103 +169,7 @@ namespace ManagementApp.Controllers
             }
         }
 
-        
-
-        //public ActionResult GetEvents(double start, double end)
-        //{
-
-        //}
-
-        // GET: Events/Details/5
-        public ActionResult Details(int id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = eventService.GetEvent(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // GET: Events/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Events/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "eventId,capacity,start,end,classesId,hallId,trainerId")] Event @event)
-        {
-            if (ModelState.IsValid)
-            {
-                
-                return RedirectToAction("Index");
-            }
-            
-            return View(@event);
-        }
-
-        // GET: Events/Edit/5
-        public ActionResult Edit(int id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = eventService.GetEvent(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "eventId,capacity,start,end,classesId,hallId,trainerId")] Event @event)
-        {
-            if (ModelState.IsValid)
-            {
-               
-                return RedirectToAction("Index");
-            }
-            return View(@event);
-        }
-
-        // GET: Events/Delete/5
-        public ActionResult Delete(int id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = eventService.GetEvent(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Events/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Event @event = eventService.GetEvent(id);
-            return RedirectToAction("Index");
-        }
+ 
 
         protected override void Dispose(bool disposing)
         {
