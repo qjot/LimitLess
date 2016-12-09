@@ -35,7 +35,9 @@ namespace ManagementApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"
+                      "~/Content/site.css,",
+                      "~/Content/font-awsome/css/font-awesome.min.css,",
+                      "~/Content/sb-admin.css"
                      ));
             //Calendar css file
             bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
