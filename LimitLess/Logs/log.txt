@@ -1,0 +1,2 @@
+<LogEntry><Message>user:  action: Index view: Home</Message><User><Level>INFO<Date>17.12.2016 18:50:10</Date></Level>
+</User></LogEntry>

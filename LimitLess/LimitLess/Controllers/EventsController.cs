@@ -9,6 +9,7 @@ using Limtless.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
+using Limitless.Data.Logger;
 
 namespace LimitLess.Web.Controllers
 {
@@ -18,14 +19,16 @@ namespace LimitLess.Web.Controllers
         private readonly IEventService eventService;
         private readonly IClassesService classesSerice;
         private ApplicationUserManager _userManager;
+        private readonly ILogger _logger;
 
         public EventsController(IHallService hallService, IEventService eventService,
-                                IClassesService classesSerice)
+                                IClassesService classesSerice, ILogger logger)
         {
             //UserManager = userManager;
             this.hallService = hallService;
             this.eventService = eventService;
             this.classesSerice = classesSerice;
+            this._logger = logger;
 
         }
         public ApplicationUserManager UserManager
@@ -42,12 +45,13 @@ namespace LimitLess.Web.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            
+            _logger.Info(string.Format("user: {0} action: Index view: Events", User.Identity.Name));
             return View();
         }
 
         public JsonResult GetEvents(string start, string end)
         {
+            _logger.Info(string.Format("user: {0} action: LoadEvents view: Events", User.Identity.Name));
             IEnumerable<Event> eventList = new List<Event>();
             eventList = eventService.GetEvents();
             List<CalendarEventModelView> calendarEvenList = new List<CalendarEventModelView>();

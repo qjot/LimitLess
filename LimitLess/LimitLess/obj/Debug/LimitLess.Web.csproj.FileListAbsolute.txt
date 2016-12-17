@@ -182,3 +182,5 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.Owin.Sec
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.csprojResolveAssemblyReference.cache
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.pdb
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.xml

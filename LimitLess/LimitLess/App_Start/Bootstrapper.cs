@@ -6,7 +6,7 @@ using Autofac.Integration.Mvc;
 using Limitless.Data.Infrastructure;
 using Limitless.Data.Repositories;
 using Limitless.Service;
-
+using LimitLess.Web.log4net;
 
 namespace LimitLess.Web.App_Start
 {
@@ -45,6 +45,9 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(EventService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
+            // Logger
+            builder.RegisterAssemblyTypes(typeof(Logger).Assembly).AsImplementedInterfaces()
+                .InstancePerRequest();
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

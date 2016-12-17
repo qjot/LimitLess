@@ -24,6 +24,7 @@ namespace Limitless.Data
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
         public DbSet<Membership> memberships { get; set; }
+        public DbSet<Log> logs { get; set; }
         public DbSet<User> users { get; set; }
         public virtual void Commit()
         {
@@ -39,6 +40,7 @@ namespace Limitless.Data
             modelBuilder.Configurations.Add(new MembershipConfiguration());
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new OrderDetailConfiguration());
+            modelBuilder.Configurations.Add(new LogConfiguration());
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
