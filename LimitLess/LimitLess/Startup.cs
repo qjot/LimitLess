@@ -13,7 +13,7 @@ namespace Limitless.Web
         {
             ConfigureAuth(app);
             
-            createRolesandUsers();
+            //createRolesandUsers();
         }
 
         private void createRolesandUsers()

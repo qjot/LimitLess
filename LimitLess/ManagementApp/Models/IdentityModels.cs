@@ -21,9 +21,7 @@ namespace ManagementApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public static string connectionString =
-            @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
-        public ApplicationDbContext()
+         public ApplicationDbContext()
             : base("connectionString", throwIfV1Schema: false)
         {
         }

@@ -21,40 +21,10 @@ namespace Limitless.Web.Controllers
             this.EventService = EventService;
         }
 
-        //public ActionResult Index()
-        //{
-        //    IEnumerable<Hall> halls;
-        //    IEnumerable<Hall> Events;
-        //    Event newEvent = new Event
-        //    {
-        //        capacity = 20,
-        //        classesId = 0,
-        //        //date = DateTime.Now,
-        //        hallId = 1,
-        //        EventID = 1,
-        //        trainerID = 1
-
-        //    };
-
-        //    Hall newHall = new Hall
-        //    {   
-        //        maxCapacity = 20,
-        //        name = "Sala 1",
-        //        hallId = 0
-        //    };
-        //    hallService.CreateHall(newHall);
-        //    hallService.SaveHall();
-        //    halls = hallService.GetHalls();
-
-
-        //    EventService.CreateEvent(newEvent);
-        //    EventService.SaveEvent();
-
-
-
-        //    ViewBag.Message = halls.FirstOrDefault().name;
-        //    return View();
-        //}
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

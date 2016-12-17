@@ -9,7 +9,9 @@ namespace Limitless.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui-1.12.1.js",
+                         "~/Scripts/lib/moment.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +27,16 @@ namespace Limitless.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/business-casual.css"));
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
+                    "~/Scripts/fullcalendar.js",
+                     "~/Scripts/views/calendarViewScript.js",
+                     "~/Scripts/locale/en-gb.js",
+                     "~/Scripts/views/eventView.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/fullcalendarcss").Include(
+                       "~/Content/fullcalendar.css"));
         }
     }
 }

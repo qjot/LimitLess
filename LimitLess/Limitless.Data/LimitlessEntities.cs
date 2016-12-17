@@ -47,7 +47,7 @@ namespace Limitless.Data
             modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }
 
-        
+
 
 
         //public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
