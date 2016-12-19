@@ -3,12 +3,12 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Limitless.Data.Cofiguration
 {
-    class LogConfiguration : EntityTypeConfiguration<Log>
+    class LogConfiguration : EntityTypeConfiguration<Logs>
     {
         public LogConfiguration()
         {
             ToTable("Logs");
-            Property(g => g.idLog).IsRequired();
+            Property(g => g.logId).IsRequired();
 
         }
     }

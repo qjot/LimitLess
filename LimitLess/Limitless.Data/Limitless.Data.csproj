@@ -121,7 +121,6 @@
     <Compile Include="Cofiguration\OrderConfiguration.cs" />
     <Compile Include="Cofiguration\OrderDetailConfiguration.cs" />
     <Compile Include="Cofiguration\EventConfiguration.cs" />
-    <Compile Include="Framework\ILogger.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
@@ -138,6 +137,22 @@
     <Compile Include="Migrations\201612011431594_Update event.cs" />
     <Compile Include="Migrations\201612011431594_Update event.Designer.cs">
       <DependentUpon>201612011431594_Update event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612181257515_UpdateUserAndAddLog.cs" />
+    <Compile Include="Migrations\201612181257515_UpdateUserAndAddLog.Designer.cs">
+      <DependentUpon>201612181257515_UpdateUserAndAddLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612181935039_updateChanges.cs" />
+    <Compile Include="Migrations\201612181935039_updateChanges.Designer.cs">
+      <DependentUpon>201612181935039_updateChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612182019063_updateLogTable.cs" />
+    <Compile Include="Migrations\201612182019063_updateLogTable.Designer.cs">
+      <DependentUpon>201612182019063_updateLogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612182054573_updateLogTable2.cs" />
+    <Compile Include="Migrations\201612182054573_updateLogTable2.Designer.cs">
+      <DependentUpon>201612182054573_updateLogTable2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +174,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612011431594_Update event.resx">
       <DependentUpon>201612011431594_Update event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612181257515_UpdateUserAndAddLog.resx">
+      <DependentUpon>201612181257515_UpdateUserAndAddLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612181935039_updateChanges.resx">
+      <DependentUpon>201612181935039_updateChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612182019063_updateLogTable.resx">
+      <DependentUpon>201612182019063_updateLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612182054573_updateLogTable2.resx">
+      <DependentUpon>201612182054573_updateLogTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

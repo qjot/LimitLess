@@ -52,6 +52,9 @@ namespace LimitLess.Web.App_Start
             builder.RegisterAssemblyTypes(typeof(OrderDetailService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
+            builder.RegisterAssemblyTypes(typeof(LogService).Assembly)
+              .Where(t => t.Name.EndsWith("Service"))
+              .AsImplementedInterfaces().InstancePerRequest();
 
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

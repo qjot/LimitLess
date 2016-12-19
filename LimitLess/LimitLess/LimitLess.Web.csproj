@@ -446,6 +446,10 @@
       <Project>{fe312e5b-5012-4d2f-98aa-d4763fd993c0}</Project>
       <Name>Limitless.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Limitless.log4net\Limitless.log4net.csproj">
+      <Project>{5f855106-5573-422c-942a-dc0b2ac78d7f}</Project>
+      <Name>Limitless.log4net</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Limitless.Model\Limitless.Model.csproj">
       <Project>{EDEC190F-79B6-4C08-BF44-3A2C2C2930EE}</Project>
       <Name>Limitless.Model</Name>

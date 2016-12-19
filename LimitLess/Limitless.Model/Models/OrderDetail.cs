@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Limitless.Model{
-    [Table("Order Detail")]
+    [Table("OrderDetails")]
     public class OrderDetail
     {
         public int orderDetailId { get; set; }

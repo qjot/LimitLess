@@ -14,9 +14,9 @@ namespace Limitless.Data
             @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
         public LimitlessEntities() : base(connectionString)
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>(connectionString));
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>("connectionString"));
-
+            
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>("connectionString"));
+            Database.SetInitializer<LimitlessEntities>(null);
         }
         public DbSet<Hall> halls { get; set; }
         public DbSet<ClassesType> classesesType { get; set; }
@@ -24,7 +24,7 @@ namespace Limitless.Data
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetail> orderDetails { get; set; }
         public DbSet<Membership> memberships { get; set; }
-        public DbSet<Log> logs { get; set; }
+        public DbSet<Logs> logs { get; set; }
         public DbSet<User> users { get; set; }
         public virtual void Commit()
         {

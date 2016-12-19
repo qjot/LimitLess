@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementApp", "Management
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{392069FA-C35C-4B80-97D7-3B0327C2663A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless.log4net", "Limitless.log4net\Limitless.log4net.csproj", "{5F855106-5573-422C-942A-DC0B2AC78D7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{392069FA-C35C-4B80-97D7-3B0327C2663A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F855106-5573-422C-942A-DC0B2AC78D7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F855106-5573-422C-942A-DC0B2AC78D7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F855106-5573-422C-942A-DC0B2AC78D7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F855106-5573-422C-942A-DC0B2AC78D7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

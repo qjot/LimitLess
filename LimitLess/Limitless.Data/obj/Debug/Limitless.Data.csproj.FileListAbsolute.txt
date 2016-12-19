@@ -65,9 +65,13 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\bin\Debug\System.
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csprojResolveAssemblyReference.cache
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.dll
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.App_GlobalResources.AdminResources.resources
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csproj.GenerateResource.Cache
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateafterdropDatabase.resources
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.Updateevent.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateUserAndAddLog.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.updateChanges.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.updateLogTable.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.updateLogTable2.resources
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.csproj.GenerateResource.Cache
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb

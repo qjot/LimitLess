@@ -12,6 +12,7 @@ namespace LimitLess.Web.log4net
     {
         protected override void FormatXml(XmlWriter writer, LoggingEvent loggingEvent)
         {
+
             writer.WriteStartElement("LogEntry");
             writer.WriteStartElement("Date");
             writer.WriteString(loggingEvent.TimeStamp.ToString());
@@ -32,6 +33,8 @@ namespace LimitLess.Web.log4net
             writer.WriteString(loggingEvent.LoggerName);
             writer.WriteEndElement();
             writer.WriteEndElement();
+
+
         }
     }
 }

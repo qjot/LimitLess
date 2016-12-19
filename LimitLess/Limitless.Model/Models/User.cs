@@ -22,11 +22,15 @@ namespace Limitless.Model
         public DateTime? renewalDate { get; set; }
         [DisplayName("Last Payment")]
         public DateTime? lastPayment { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string PostalCode { get; set; }
+        [DisplayName("First Name")]
+        public string firstName { get; set; }
+        [DisplayName("Last Name")]
+        public string lastName { get; set; }
+        public string address1 { get; set; }
+        public string address2 { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string postalCode { get; set; }
         public int? membershipId { get; set; }
         [Key]
         [ForeignKey("membershipId")]

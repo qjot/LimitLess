@@ -114,6 +114,7 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\EntityFramework.Sq
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Limitless.Data.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Limitless.Model.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Limitless.Service.dll
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -150,6 +151,7 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Limitless.Model.pd
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Limitless.Service.pdb
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Autofac.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Autofac.Integration.Mvc.xml
+C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.AI.Web.xml
@@ -182,5 +184,3 @@ C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\Microsoft.Owin.Sec
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.csprojResolveAssemblyReference.cache
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.dll
 C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\obj\Debug\LimitLess.Web.pdb
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.dll
-C:\Users\mrlor\Source\Repos\LimitLess\LimitLess\LimitLess\bin\log4net.xml

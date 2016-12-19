@@ -1,8 +1,0 @@
-<LogEntry><Message>user:  action: Index view: Home</Message><User /><Level>INFO</Level><Date>17.12.2016 18:52:38</Date></LogEntry>
-<LogEntry><Date>17.12.2016 19:10:22</Date><Message>user:  action: Index view: Home</Message><User /><Level>INFO</Level><Thread>5</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:26:12</Date><Message>user:  action: Index view: Events</Message><User /><Level>INFO</Level><Thread>23</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:26:21</Date><Message>user:  action: Index view: Events</Message><User /><Level>INFO</Level><Thread>23</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:26:21</Date><Message>user:  action: LoadEvents view: Events</Message><User /><Level>INFO</Level><Thread>26</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:26:23</Date><Message>user:  action: LoadEvents view: Events</Message><User /><Level>INFO</Level><Thread>24</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:26:32</Date><Message>user:  action: LoadEvents view: Events</Message><User /><Level>INFO</Level><Thread>23</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>
-<LogEntry><Date>17.12.2016 19:44:46</Date><Message>user:  action: LoadEvents view: Events</Message><User /><Level>INFO</Level><Thread>28</Thread><LoggerName>ErrorLogger</LoggerName></LogEntry>

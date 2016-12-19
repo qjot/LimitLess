@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ClassesService.cs" />
     <Compile Include="HallService.cs" />
+    <Compile Include="LogService.cs" />
     <Compile Include="MembershipService.cs" />
     <Compile Include="OrderDetailsService.cs" />
     <Compile Include="OrderService.cs" />
