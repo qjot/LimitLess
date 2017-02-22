@@ -38,30 +38,7 @@ namespace Limitless.Data
             };
             }
 
-        private static List<OrderDetail> GetOrderDetail()
-        {
-            return new List<OrderDetail>
-            {
-                new OrderDetail {
-                    orderId = 0,
-                    orderDetailId = 0,
-                    description = "Przykładowe zamówienie",
-                    name = "cos",
-                    productId = 0,
-                    unitPrice = 20,
-                    quantity = 1
-                },
-                new OrderDetail {
-                    orderId = 1,
-                    orderDetailId = 1,
-                    description = "Przykładowe zamówienie 1",
-                    name = "cos1",
-                    productId = 1,
-                    unitPrice = 20,
-                    quantity = 1
-                }
-            };
-        }
+      
 
         private static List<Event> GetEvent()
             {

@@ -1,0 +1,16 @@
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Service.dll.config
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Service.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Service.pdb
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Data.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Model.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\EntityFramework.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Data.pdb
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Limitless.Model.pdb
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\EntityFramework.xml
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Release\Limitless.Service.csprojResolveAssemblyReference.cache
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Release\Limitless.Service.dll
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Service\obj\Release\Limitless.Service.pdb

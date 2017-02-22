@@ -1,7 +1,7 @@
 ﻿
 using System;
-using Limitless.Data.Logger;
 using log4net;
+using Limitless.log4net;
 
 namespace LimitLess.Web.log4net
 {

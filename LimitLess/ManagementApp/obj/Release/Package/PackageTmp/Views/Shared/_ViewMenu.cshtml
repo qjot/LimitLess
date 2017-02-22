@@ -1,0 +1,57 @@
+﻿@{
+    var menus = new[]
+    {
+        new {LinkText = "LimitLess", ActionName = "Index", ControllerName = "Home", Roles = "All", ImgSrc = "fa-home"},
+        new {LinkText = "Users", ActionName = "Index", ControllerName = "User", Roles = "All,Admin",ImgSrc = "fa-users"},
+        new {LinkText = "Roles", ActionName = "Index", ControllerName = "RolesAdmin", Roles = "All,Admin",ImgSrc = "fa-life-ring"},
+        //new {LinkText = "Trainers", ActionName = "Contact", ControllerName = "Home", Roles = "Admin, Anonymous",ImgSrc = "das"},
+        new {LinkText = "Classes", ActionName = "Index", ControllerName = "Events", Roles = "Admin, Trainer",ImgSrc = "fa-calendar"},
+       // new {LinkText = "Halls", ActionName = "Index", ControllerName = "Home", Roles = "Admin",ImgSrc = "das"},
+        new {LinkText = "Carnets", ActionName = "Contact", ControllerName = "Home", Roles = "Admin",ImgSrc = "fa-exclamation-circle"},
+        new {LinkText = "Orders", ActionName = "Contact", ControllerName = "Home", Roles = "Dealer,PublicUser",ImgSrc = "fa-check-circle-o"},
+         new {LinkText = "Logs", ActionName = "Index", ControllerName = "Logs", Roles = "Admin",ImgSrc = "fa-lock"},
+    };
+}
+
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin;
+
+   
+        @if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            
+                var userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var userRoles = userManager.GetRoles(User.Identity.GetUserId());
+               var links = from item in menus
+                        where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                        .Any(x => userRoles.Contains(x) || x == "All")
+                        select item;
+            foreach (var link in links)
+            {
+                @:
+                <li>
+                    <a href="@Url.Action(@link.ActionName, @link.ControllerName)"><i class="fa fa-fw @link.ImgSrc" aria-hidden="true"></i>
+                        @link.LinkText
+                       
+                    </a>
+                </li>
+            }
+        }
+        else
+        {
+            var links = from item in menus
+                        where item.Roles.Split(new String[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                        .Any(x => new String[] { "All", "Anonymous" }.Contains(x))
+                        select item;
+            foreach (var link in links)
+            {@:
+                <li>
+                    <a href="@Url.Action(@link.ActionName, @link.ControllerName)">
+                        @link.LinkText
+                        <span class="fa fa-fw @link.ImgSrc" aria-hidden="true"></span>
+                    </a>
+                </li>
+                @*<li ><i class="fa fa-fw @link.ImgSrc"></i> @Html.ActionLink(link.LinkText, link.ActionName, link.ControllerName)</li>*@
+                
+            }
+        }

@@ -130,29 +130,13 @@
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="LimitlessEntities.cs" />
     <Compile Include="LimitlessSeedData.cs" />
-    <Compile Include="Migrations\201611301402346_Update after drop Database.cs" />
-    <Compile Include="Migrations\201611301402346_Update after drop Database.Designer.cs">
-      <DependentUpon>201611301402346_Update after drop Database.cs</DependentUpon>
+    <Compile Include="Migrations\201702051540376_Initlialize_database.cs" />
+    <Compile Include="Migrations\201702051540376_Initlialize_database.Designer.cs">
+      <DependentUpon>201702051540376_Initlialize_database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011431594_Update event.cs" />
-    <Compile Include="Migrations\201612011431594_Update event.Designer.cs">
-      <DependentUpon>201612011431594_Update event.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612181257515_UpdateUserAndAddLog.cs" />
-    <Compile Include="Migrations\201612181257515_UpdateUserAndAddLog.Designer.cs">
-      <DependentUpon>201612181257515_UpdateUserAndAddLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612181935039_updateChanges.cs" />
-    <Compile Include="Migrations\201612181935039_updateChanges.Designer.cs">
-      <DependentUpon>201612181935039_updateChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612182019063_updateLogTable.cs" />
-    <Compile Include="Migrations\201612182019063_updateLogTable.Designer.cs">
-      <DependentUpon>201612182019063_updateLogTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612182054573_updateLogTable2.cs" />
-    <Compile Include="Migrations\201612182054573_updateLogTable2.Designer.cs">
-      <DependentUpon>201612182054573_updateLogTable2.cs</DependentUpon>
+    <Compile Include="Migrations\201702051717595_Update_Hall_Table.cs" />
+    <Compile Include="Migrations\201702051717595_Update_Hall_Table.Designer.cs">
+      <DependentUpon>201702051717595_Update_Hall_Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,23 +153,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611301402346_Update after drop Database.resx">
-      <DependentUpon>201611301402346_Update after drop Database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702051540376_Initlialize_database.resx">
+      <DependentUpon>201702051540376_Initlialize_database.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011431594_Update event.resx">
-      <DependentUpon>201612011431594_Update event.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612181257515_UpdateUserAndAddLog.resx">
-      <DependentUpon>201612181257515_UpdateUserAndAddLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612181935039_updateChanges.resx">
-      <DependentUpon>201612181935039_updateChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612182019063_updateLogTable.resx">
-      <DependentUpon>201612182019063_updateLogTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612182054573_updateLogTable2.resx">
-      <DependentUpon>201612182054573_updateLogTable2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702051717595_Update_Hall_Table.resx">
+      <DependentUpon>201702051717595_Update_Hall_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

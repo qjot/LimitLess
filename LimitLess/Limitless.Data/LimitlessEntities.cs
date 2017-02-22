@@ -11,7 +11,7 @@ namespace Limitless.Data
     public class LimitlessEntities : DbContext
     {
         private static string connectionString =
-            @"Data Source=DESKTOP-K4473GC\SQLEXPRESS;Initial Catalog=LimitlessEntities;Integrated Security=True";
+            @"Data Source=CPX-E4M39MY2P7Q\SQLEXPRESS;Initial Catalog=Limitless;Integrated Security=True";
         public LimitlessEntities() : base(connectionString)
         {
             
@@ -44,7 +44,7 @@ namespace Limitless.Data
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("userClaims");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
             modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo");
             modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }

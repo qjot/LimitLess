@@ -6,10 +6,14 @@ namespace Limitless.Model
 {
     public class Order
     {
+        [Key]
         public int orderId { get; set; }
         // public DateTime? orderDate { get; set; }
         [DisplayFormat(DataFormatString = "dd-MM-yyyy hh:mm")]
         public DateTime? OrderDate { get; set; }
+        [Key]
+        [ForeignKey("userId")]
+        public virtual User user { get; set; }
         public string username { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }

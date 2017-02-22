@@ -33,15 +33,13 @@ namespace Limitless.Web.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Configurations.Add(new HallConfiguration());
-            //modelBuilder.Configurations.Add(new EventConfiguration());
-            //modelBuilder.Configurations.Add(new ClassesConfiguration());
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins").HasKey<string>(l => l.UserId);
             modelBuilder.Entity<IdentityRole>().ToTable("Roles").HasKey<string>(r => r.Id);
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles").HasKey(r => new { r.RoleId, r.UserId });
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
-            modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo");
-            modelBuilder.Entity<User>().ToTable("Users", "dbo");
+            modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo").Property(p => p.Id).HasColumnName("Id"); ;
+            modelBuilder.Entity<ApplicationUser>().ToTable("Users", "dbo").Property(p => p.Id).HasColumnName("Id"); ;
+            modelBuilder.Entity<User>().ToTable("Users", "dbo").Property(p => p.Id).HasColumnName("Id");
         }
     }
 }

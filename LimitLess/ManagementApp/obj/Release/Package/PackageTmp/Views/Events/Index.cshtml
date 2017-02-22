@@ -1,0 +1,109 @@
+﻿@model ManagementApp.Models.EventViewModel
+
+@Styles.Render("~/Content/fullcalendar.css")
+@Scripts.Render("~/bundles/fullcalendarjs")
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+     .fc-widget-content {
+        height:5em !important;
+    }
+     
+</style>
+
+
+<h2>Index</h2>
+
+<div id="calendar" style="width:80%"></div>
+
+<div id="popupEventForm" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">Add new event</h3>
+            </div>
+            <div class="modal-body">
+                <form id="EventForm">
+                    <div class="form-group">
+                        <input type="hidden" id="eventID">
+                        <label>Event title</label>
+                        <input type="text" id="eventTitle" placeholder="Title here"><br />
+                        <label>Scheduled date</label>
+                        <input type="text" id="eventDate"><br />
+                        <label>Scheduled time</label>
+                        <input type="text" id="eventTime"><br />
+                        <label>Appointment length (minutes)</label>
+                        <input type="text" id="eventDuration" placeholder="60"><br/>
+                        <label>Trainer</label>
+                        <select id="trainerSelectable"data-placeholder="Select a trainer username" class="form-control chosen-select" style="width: 350px;" tabindex="2">
+
+                            @{
+                                foreach (var item in Model.trainerDictionary)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            }
+                        </select>
+                        <label>Classes type</label>
+                        <select id="classesSelectable" data-placeholder="Select a classes type" class="form-control chosen-select" style="width: 350px;" tabindex="2">
+
+                            @{
+                                foreach (var item in Model.classesTypeDictionary)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            }
+                        </select>
+                        <label>Hall</label>
+                        <select id="hallSelectable" data-placeholder="Select a hall" class="form-control chosen-select" style="width:350px;" tabindex="2">
+
+                            @{
+                                foreach (var item in Model.hallDictionary)
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+                                }
+                            }
+                        </select>
+
+</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnPopupCancel" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="btnPopupSave" data-dismiss="modal">Save event</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popUpEventInfo" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Event info</h4>
+            </div>
+            <div class="modal-body">
+                <h1 id="classesType"></h1>
+                <p id="classesDescription"></p>
+                <p>Date: <span id="startSpan"></span></p>
+                <p>Last: <span id="lastSpan"></span></p>
+                <p>Hall: <span id="hallSpan"></span></p>
+                <p>Available: <span id="availableSpan"></span></p>
+                <p>Id: <span id="eventIdSpan"></span></p>
+
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button  id="deleteEventButton"type="button" class="btn btn-primary">Delete</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

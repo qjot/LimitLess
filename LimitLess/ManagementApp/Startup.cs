@@ -13,7 +13,7 @@ namespace ManagementApp
         {
             ConfigureAuth(app);
 
-           // createRolesandUsers();
+            createRolesandUsers();
         }
 
         private void createRolesandUsers()

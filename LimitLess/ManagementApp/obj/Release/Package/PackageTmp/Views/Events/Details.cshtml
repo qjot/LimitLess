@@ -1,0 +1,66 @@
+﻿@model Limitless.Model.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.classes.last)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classes.last)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hall.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hall.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.end)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.eventId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -10,14 +10,15 @@ namespace Limitless.Model{
     [Table("OrderDetails")]
     public class OrderDetail
     {
+        [Key]
         public int orderDetailId { get; set; }
         public int orderId { get; set; }
         [Key]
         [ForeignKey("orderId")]
         public virtual Order order { get; set; }
-
         [Key]
-        public int productId { get; set; }
+        [ForeignKey("membershipId")]
+        public virtual Membership membership { get; set; }
         [Required]
         public string name{ get; set; }
         [Required]

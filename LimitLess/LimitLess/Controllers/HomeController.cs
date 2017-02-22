@@ -7,7 +7,7 @@ using Limitless.Data;
 using Limitless.Data.Infrastructure;
 using Limitless.Model;
 using Limitless.Service;
-using Limitless.Data.Logger;
+using Limitless.log4net;
 
 namespace Limitless.Web.Controllers
 {

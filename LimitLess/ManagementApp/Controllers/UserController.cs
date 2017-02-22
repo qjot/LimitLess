@@ -137,28 +137,28 @@ namespace ManagementApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,AccessFailedCount,UserName")] EditUserViewModel editUserVM, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PhoneNumber,AccessFailedCount,UserName")] User user, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
                 //TODO brak modelu ? 
-                User oldUser = UserManager.FindById(editUserVM.user.Id);
-                oldUser.UserName = editUserVM.user.UserName;
-                oldUser.PhoneNumber = editUserVM.user.PhoneNumber;
-                oldUser.Email = editUserVM.user.Email;
-                oldUser.AccessFailedCount = editUserVM.user.AccessFailedCount;
-                var userRoles = UserManager.GetRoles(editUserVM.user.Id);
+                User oldUser = UserManager.FindById(user.Id);
+                oldUser.UserName = user.UserName;
+                oldUser.PhoneNumber = user.PhoneNumber;
+                oldUser.Email = user.Email;
+                oldUser.AccessFailedCount = user.AccessFailedCount;
+                var userRoles = UserManager.GetRoles(user.Id);
 
                 selectedRole = selectedRole ?? new string[] { };
 
-                var result = await UserManager.AddToRolesAsync(editUserVM.user.Id, selectedRole.Except(userRoles).ToArray<string>());
+                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
 
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                result = await UserManager.RemoveFromRolesAsync(editUserVM.user.Id, userRoles.Except(selectedRole).ToArray<string>());
+                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
 
                 if (!result.Succeeded)
                 {
