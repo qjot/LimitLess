@@ -16,6 +16,7 @@ namespace Limitless.Model{
         [Key]
         [ForeignKey("orderId")]
         public virtual Order order { get; set; }
+        public int membershipId { get; set; }
         [Key]
         [ForeignKey("membershipId")]
         public virtual Membership membership { get; set; }

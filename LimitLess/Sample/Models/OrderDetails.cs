@@ -14,7 +14,6 @@ namespace Sample.Models
     
     public partial class OrderDetails
     {
-        public int productId { get; set; }
         public int orderDetailId { get; set; }
         public int orderId { get; set; }
         public string name { get; set; }
@@ -22,7 +21,9 @@ namespace Sample.Models
         public decimal unitPrice { get; set; }
         public short quantity { get; set; }
         public float discount { get; set; }
+        public int membershipId { get; set; }
     
+        public virtual Membership Membership { get; set; }
         public virtual Orders Orders { get; set; }
     }
 }

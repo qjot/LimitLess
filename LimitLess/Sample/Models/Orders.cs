@@ -34,8 +34,10 @@ namespace Sample.Models
         public string email { get; set; }
         public decimal total { get; set; }
         public string nip { get; set; }
+        public string userId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

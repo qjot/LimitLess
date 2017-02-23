@@ -119,3 +119,4 @@ C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\De
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.pdb
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.Initlialize_database.resources
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.Update_Hall_Table.resources
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Debug\Limitless.Data.Migrations.UpdateOrderDetails.resources

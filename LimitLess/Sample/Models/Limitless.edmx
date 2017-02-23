@@ -86,9 +86,8 @@
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
-            <PropertyRef Name="productId" />
+            <PropertyRef Name="orderDetailId" />
           </Key>
-          <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="orderDetailId" Type="int" Nullable="false" />
           <Property Name="orderId" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" Nullable="false" />
@@ -96,6 +95,7 @@
           <Property Name="unitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="quantity" Type="smallint" Nullable="false" />
           <Property Name="discount" Type="real" Nullable="false" />
+          <Property Name="membershipId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -115,6 +115,7 @@
           <Property Name="email" Type="nvarchar(max)" Nullable="false" />
           <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="nip" Type="nvarchar(max)" />
+          <Property Name="userId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -235,6 +236,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_OrderDetails_dbo_Membership_membershipId">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="membershipId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="membershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_OrderDetails_dbo_Orders_orderId">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -246,6 +261,18 @@
             </Principal>
             <Dependent Role="OrderDetails">
               <PropertyRef Name="orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -352,9 +379,17 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Events" EntitySet="Events" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderDetails_dbo_Membership_membershipId" Association="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId">
+            <End Role="Membership" EntitySet="Membership" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_OrderDetails_dbo_Orders_orderId" Association="Self.FK_dbo_OrderDetails_dbo_Orders_orderId">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_Users_userId" Association="Self.FK_dbo_Orders_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_userClaims_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id">
             <End Role="Users" EntitySet="Users" />
@@ -472,13 +507,13 @@
           <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId" FromRole="Membership" ToRole="OrderDetails" />
           <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Users_dbo_Membership_membershipId" FromRole="Membership" ToRole="Users" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
-            <PropertyRef Name="productId" />
+            <PropertyRef Name="orderDetailId" />
           </Key>
-          <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="orderDetailId" Type="Int32" Nullable="false" />
           <Property Name="orderId" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -486,6 +521,8 @@
           <Property Name="unitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="quantity" Type="Int16" Nullable="false" />
           <Property Name="discount" Type="Single" Nullable="false" />
+          <Property Name="membershipId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Membership" Relationship="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId" FromRole="OrderDetails" ToRole="Membership" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_OrderDetails_dbo_Orders_orderId" FromRole="OrderDetails" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Orders">
@@ -506,7 +543,9 @@
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="nip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_dbo_OrderDetails_dbo_Orders_orderId" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -582,6 +621,7 @@
           <NavigationProperty Name="Events" Relationship="Self.FK_dbo_Events_dbo_Users_trainerId" FromRole="Users" ToRole="Events" />
           <NavigationProperty Name="Events1" Relationship="Self.FK_dbo_Users_dbo_Events_Event_eventId" FromRole="Users" ToRole="Events" />
           <NavigationProperty Name="Membership" Relationship="Self.FK_dbo_Users_dbo_Membership_membershipId" FromRole="Users" ToRole="Membership" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="userClaims" Relationship="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="userClaims" />
           <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserLogins" />
           <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserRoles" />
@@ -650,6 +690,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_OrderDetails_dbo_Membership_membershipId">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="membershipId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="membershipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Users_dbo_Membership_membershipId">
           <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -673,6 +727,18 @@
             </Principal>
             <Dependent Role="OrderDetails">
               <PropertyRef Name="orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_Users_userId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -724,7 +790,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="LimitlessEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LimitlessEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="Classes" EntityType="Self.Classes" />
           <EntitySet Name="ClassesType" EntityType="Self.ClassesType" />
@@ -759,6 +825,10 @@
             <End Role="Events" EntitySet="Events" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderDetails_dbo_Membership_membershipId" Association="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId">
+            <End Role="Membership" EntitySet="Membership" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Users_dbo_Membership_membershipId" Association="Self.FK_dbo_Users_dbo_Membership_membershipId">
             <End Role="Membership" EntitySet="Membership" />
             <End Role="Users" EntitySet="Users" />
@@ -766,6 +836,10 @@
           <AssociationSet Name="FK_dbo_OrderDetails_dbo_Orders_orderId" Association="Self.FK_dbo_OrderDetails_dbo_Orders_orderId">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_Users_userId" Association="Self.FK_dbo_Orders_dbo_Users_userId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id" Association="Self.FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id">
             <End Role="Roles" EntitySet="Roles" />
@@ -789,7 +863,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LimitlessModelStoreContainer" CdmEntityContainer="LimitlessEntities">
+        <EntityContainerMapping StorageEntityContainer="LimitlessModelStoreContainer" CdmEntityContainer="LimitlessEntities1">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="LimitlessModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -878,7 +952,6 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="LimitlessModel.OrderDetails">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="orderDetailId" ColumnName="orderDetailId" />
                 <ScalarProperty Name="orderId" ColumnName="orderId" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -886,6 +959,7 @@
                 <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="membershipId" ColumnName="membershipId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -906,6 +980,7 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="nip" ColumnName="nip" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

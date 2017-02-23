@@ -138,6 +138,10 @@
     <Compile Include="Migrations\201702051717595_Update_Hall_Table.Designer.cs">
       <DependentUpon>201702051717595_Update_Hall_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702222247000_UpdateOrderDetails.cs" />
+    <Compile Include="Migrations\201702222247000_UpdateOrderDetails.Designer.cs">
+      <DependentUpon>201702222247000_UpdateOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClassesRepository.cs" />
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702051717595_Update_Hall_Table.resx">
       <DependentUpon>201702051717595_Update_Hall_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702222247000_UpdateOrderDetails.resx">
+      <DependentUpon>201702222247000_UpdateOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

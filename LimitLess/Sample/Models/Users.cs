@@ -18,6 +18,7 @@ namespace Sample.Models
         public Users()
         {
             this.Events = new HashSet<Events>();
+            this.Orders = new HashSet<Orders>();
             this.userClaims = new HashSet<userClaims>();
             this.UserLogins = new HashSet<UserLogins>();
             this.UserRoles = new HashSet<UserRoles>();
@@ -54,6 +55,8 @@ namespace Sample.Models
         public virtual ICollection<Events> Events { get; set; }
         public virtual Events Events1 { get; set; }
         public virtual Membership Membership { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<userClaims> userClaims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

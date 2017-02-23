@@ -11,6 +11,7 @@ namespace Limitless.Model
         // public DateTime? orderDate { get; set; }
         [DisplayFormat(DataFormatString = "dd-MM-yyyy hh:mm")]
         public DateTime? OrderDate { get; set; }
+        public string userId { get; set; }
         [Key]
         [ForeignKey("userId")]
         public virtual User user { get; set; }
