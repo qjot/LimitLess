@@ -26,6 +26,9 @@ namespace Limitless.Data
         public DbSet<Membership> memberships { get; set; }
         public DbSet<Logs> logs { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<PaymentData> paymentData { get; set; }
+        public DbSet<PaymentDetails> paymentDetail { get; set; }
+        public DbSet<PaymentType> paymentType { get; set; }
         public virtual void Commit()
         {
             base.SaveChanges();
@@ -36,7 +39,6 @@ namespace Limitless.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Configurations.Add(new HallConfiguration());
             modelBuilder.Configurations.Add(new EventConfiguration());
-            modelBuilder.Configurations.Add(new ClassesConfiguration());
             modelBuilder.Configurations.Add(new MembershipConfiguration());
             modelBuilder.Configurations.Add(new OrderConfiguration());
             modelBuilder.Configurations.Add(new OrderDetailConfiguration());

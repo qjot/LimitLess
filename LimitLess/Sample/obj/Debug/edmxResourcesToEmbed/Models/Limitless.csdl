@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LimitlessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="last" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="allDay" Type="Boolean" Nullable="false" />
+    <Property Name="maxCapacity" Type="Int32" Nullable="false" />
+    <Property Name="classesTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ClassesType" Relationship="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId" FromRole="Classes" ToRole="ClassesType" />
+  </EntityType>
+  <EntityType Name="ClassesType">
+    <Key>
+      <PropertyRef Name="classesTypeId" />
+    </Key>
+    <Property Name="classesTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId" FromRole="ClassesType" ToRole="Classes" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId" FromRole="ClassesType" ToRole="Events" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="eventId" />
+    </Key>
+    <Property Name="eventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="capacity" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="start" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="allDay" Type="Boolean" Nullable="false" />
+    <Property Name="classesTypeId" Type="Int32" />
+    <Property Name="hallId" Type="Int32" Nullable="false" />
+    <Property Name="trainerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClassesType" Relationship="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId" FromRole="Events" ToRole="ClassesType" />
+    <NavigationProperty Name="Halls" Relationship="Self.FK_dbo_Events_dbo_Halls_hallId" FromRole="Events" ToRole="Halls" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Events_dbo_Users_trainerId" FromRole="Events" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK_dbo_Users_dbo_Events_Event_eventId" FromRole="Events" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Halls">
+    <Key>
+      <PropertyRef Name="hallId" />
+    </Key>
+    <Property Name="hallId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="maxCapacity" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_dbo_Events_dbo_Halls_hallId" FromRole="Halls" ToRole="Events" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="logId" />
+    </Key>
+    <Property Name="logId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Thread" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Level" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logger" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Exception" Type="Boolean" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="additionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Membership">
+    <Key>
+      <PropertyRef Name="membershipId" />
+    </Key>
+    <Property Name="membershipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId" FromRole="Membership" ToRole="OrderDetails" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Users_dbo_Membership_membershipId" FromRole="Membership" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="orderDetailId" />
+    </Key>
+    <Property Name="orderDetailId" Type="Int32" Nullable="false" />
+    <Property Name="orderId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="quantity" Type="Int16" Nullable="false" />
+    <Property Name="discount" Type="Single" Nullable="false" />
+    <Property Name="membershipId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Membership" Relationship="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId" FromRole="OrderDetails" ToRole="Membership" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_OrderDetails_dbo_Orders_orderId" FromRole="OrderDetails" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="nip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_dbo_OrderDetails_dbo_Orders_orderId" FromRole="Orders" ToRole="OrderDetails" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id" FromRole="Roles" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="userClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id" FromRole="userClaims" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserLogins">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoginProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" FromRole="UserLogins" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdentityRole_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id" FromRole="UserRoles" ToRole="Roles" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" FromRole="UserRoles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="DateTime" Precision="3" />
+    <Property Name="joinDate" Type="DateTime" Precision="3" />
+    <Property Name="renewalDate" Type="DateTime" Precision="3" />
+    <Property Name="lastPayment" Type="DateTime" Precision="3" />
+    <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="membershipId" Type="Int32" />
+    <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Event_eventId" Type="Int32" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_dbo_Events_dbo_Users_trainerId" FromRole="Users" ToRole="Events" />
+    <NavigationProperty Name="Events1" Relationship="Self.FK_dbo_Users_dbo_Events_Event_eventId" FromRole="Users" ToRole="Events" />
+    <NavigationProperty Name="Membership" Relationship="Self.FK_dbo_Users_dbo_Membership_membershipId" FromRole="Users" ToRole="Membership" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="userClaims" Relationship="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="userClaims" />
+    <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserLogins" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserRoles" />
+  </EntityType>
+  <Association Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId">
+    <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassesType">
+        <PropertyRef Name="classesTypeId" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="classesTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_ClassesType_classesTypeId">
+    <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassesType">
+        <PropertyRef Name="classesTypeId" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="classesTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_Halls_hallId">
+    <End Role="Halls" Type="Self.Halls" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Halls">
+        <PropertyRef Name="hallId" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="hallId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Events_dbo_Users_trainerId">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="trainerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Users_dbo_Events_Event_eventId">
+    <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="eventId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Event_eventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Membership_membershipId">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="membershipId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="membershipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Users_dbo_Membership_membershipId">
+    <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membership">
+        <PropertyRef Name="membershipId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="membershipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Orders_orderId">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Orders_dbo_Users_userId">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="IdentityRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_userClaims_dbo_Users_IdentityUser_Id">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="userClaims" Type="Self.userClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="userClaims">
+        <PropertyRef Name="IdentityUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserLogins_dbo_Users_IdentityUser_Id">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogins">
+        <PropertyRef Name="IdentityUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserRoles_dbo_Users_IdentityUser_Id">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="IdentityUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LimitlessEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Classes" EntityType="Self.Classes" />
+    <EntitySet Name="ClassesType" EntityType="Self.ClassesType" />
+    <EntitySet Name="Events" EntityType="Self.Events" />
+    <EntitySet Name="Halls" EntityType="Self.Halls" />
+    <EntitySet Name="Logs" EntityType="Self.Logs" />
+    <EntitySet Name="Membership" EntityType="Self.Membership" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="userClaims" EntityType="Self.userClaims" />
+    <EntitySet Name="UserLogins" EntityType="Self.UserLogins" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId">
+      <End Role="ClassesType" EntitySet="ClassesType" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId">
+      <End Role="ClassesType" EntitySet="ClassesType" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_Halls_hallId" Association="Self.FK_dbo_Events_dbo_Halls_hallId">
+      <End Role="Halls" EntitySet="Halls" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Events_dbo_Users_trainerId" Association="Self.FK_dbo_Events_dbo_Users_trainerId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Users_dbo_Events_Event_eventId" Association="Self.FK_dbo_Users_dbo_Events_Event_eventId">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Membership_membershipId" Association="Self.FK_dbo_OrderDetails_dbo_Membership_membershipId">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Users_dbo_Membership_membershipId" Association="Self.FK_dbo_Users_dbo_Membership_membershipId">
+      <End Role="Membership" EntitySet="Membership" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Orders_orderId" Association="Self.FK_dbo_OrderDetails_dbo_Orders_orderId">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Orders_dbo_Users_userId" Association="Self.FK_dbo_Orders_dbo_Users_userId">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id" Association="Self.FK_dbo_UserRoles_dbo_Roles_IdentityRole_Id">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_userClaims_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="userClaims" EntitySet="userClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserLogins" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

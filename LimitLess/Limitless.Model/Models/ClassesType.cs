@@ -14,8 +14,7 @@ namespace Limitless.Model
         [Key]
         public int classesTypeId { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
-        
+        public string description { get; set; }        
 
         public virtual ICollection<Event> events { get; set; }
     }
