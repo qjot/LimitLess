@@ -14,20 +14,15 @@ namespace ManagementApp.Controllers
 {
     public class EventsController : Controller
     {
-
         private readonly IHallService hallService;
         private readonly IEventService eventService;
         private readonly IClassesService classesSerice;
         private ApplicationUserManager _userManager;
 
-        public EventsController(IHallService hallService, IEventService eventService,
-                                IClassesService classesSerice)
-        {
-            //UserManager = userManager;
+        public EventsController(IHallService hallService, IEventService eventService,IClassesService classesSerice)   {           
             this.hallService = hallService;
             this.eventService = eventService;
             this.classesSerice = classesSerice;
-
         }
         public ApplicationUserManager UserManager
         {

@@ -28,6 +28,10 @@ namespace Limitless.Model
         public string email { get; set; }
         public decimal? total { get; set; }
         public string nip { get; set; }
+        public int paymentTypeId { get; set; }
+        [Key]
+        [ForeignKey("paymentTypeId")]
+        public virtual PaymentType peymentType { get; set; }
         public virtual ICollection<OrderDetail> orderDetails { get; set; }
 
     }

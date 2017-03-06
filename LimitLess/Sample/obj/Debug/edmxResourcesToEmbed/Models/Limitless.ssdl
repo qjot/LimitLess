@@ -10,19 +10,6 @@
     <Property Name="Model" Type="varbinary(max)" Nullable="false" />
     <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Classes">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="last" Type="nvarchar(max)" />
-    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="title" Type="nvarchar(max)" />
-    <Property Name="description" Type="nvarchar" MaxLength="500" Nullable="false" />
-    <Property Name="allDay" Type="bit" Nullable="false" />
-    <Property Name="maxCapacity" Type="int" Nullable="false" />
-    <Property Name="classesTypeId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="ClassesType">
     <Key>
       <PropertyRef Name="classesTypeId" />
@@ -112,6 +99,31 @@
     <Property Name="nip" Type="nvarchar(max)" />
     <Property Name="userId" Type="nvarchar" MaxLength="128" />
   </EntityType>
+  <EntityType Name="PaymentDatas">
+    <Key>
+      <PropertyRef Name="paymentDataId" />
+    </Key>
+    <Property Name="paymentDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paymentTypeId" Type="int" Nullable="false" />
+    <Property Name="value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentDetails">
+    <Key>
+      <PropertyRef Name="paymentDetailsId" />
+    </Key>
+    <Property Name="paymentDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderId" Type="int" Nullable="false" />
+    <Property Name="paymentDataId" Type="int" Nullable="false" />
+    <Property Name="paymentDate" Type="datetime" />
+    <Property Name="value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentTypes">
+    <Key>
+      <PropertyRef Name="paymentTypeId" />
+    </Key>
+    <Property Name="paymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="paymentType" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="Id" />
@@ -179,20 +191,6 @@
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Event_eventId" Type="int" />
   </EntityType>
-  <Association Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId">
-    <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ClassesType">
-        <PropertyRef Name="classesTypeId" />
-      </Principal>
-      <Dependent Role="Classes">
-        <PropertyRef Name="classesTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_dbo_Events_dbo_ClassesType_classesTypeId">
     <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="0..1" />
     <End Role="Events" Type="Self.Events" Multiplicity="*" />
@@ -259,6 +257,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_dbo_Orders_dbo_PaymentDetails_orderId">
+    <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentDetails">
+        <PropertyRef Name="paymentDetailsId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_Orders_dbo_Users_userId">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -268,6 +278,34 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+    <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PaymentDatas" Type="Self.PaymentDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentTypes">
+        <PropertyRef Name="paymentTypeId" />
+      </Principal>
+      <Dependent Role="PaymentDatas">
+        <PropertyRef Name="paymentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+    <End Role="PaymentDatas" Type="Self.PaymentDatas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentDatas">
+        <PropertyRef Name="paymentDataId" />
+      </Principal>
+      <Dependent Role="PaymentDetails">
+        <PropertyRef Name="paymentDataId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -345,7 +383,6 @@
   </Association>
   <EntityContainer Name="LimitlessModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClassesType" EntityType="Self.ClassesType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Halls" EntityType="Self.Halls" Schema="dbo" store:Type="Tables" />
@@ -353,15 +390,14 @@
     <EntitySet Name="Membership" EntityType="Self.Membership" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentDatas" EntityType="Self.PaymentDatas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="userClaims" EntityType="Self.userClaims" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId">
-      <End Role="ClassesType" EntitySet="ClassesType" />
-      <End Role="Classes" EntitySet="Classes" />
-    </AssociationSet>
     <AssociationSet Name="FK_dbo_Events_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId">
       <End Role="ClassesType" EntitySet="ClassesType" />
       <End Role="Events" EntitySet="Events" />
@@ -382,9 +418,21 @@
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderDetails" EntitySet="OrderDetails" />
     </AssociationSet>
+    <AssociationSet Name="FK_dbo_Orders_dbo_PaymentDetails_orderId" Association="Self.FK_dbo_Orders_dbo_PaymentDetails_orderId">
+      <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_Orders_dbo_Users_userId" Association="Self.FK_dbo_Orders_dbo_Users_userId">
       <End Role="Users" EntitySet="Users" />
       <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" Association="Self.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+      <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+      <End Role="PaymentDatas" EntitySet="PaymentDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" Association="Self.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+      <End Role="PaymentDatas" EntitySet="PaymentDatas" />
+      <End Role="PaymentDetails" EntitySet="PaymentDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_userClaims_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id">
       <End Role="Users" EntitySet="Users" />

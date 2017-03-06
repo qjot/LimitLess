@@ -311,10 +311,13 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\Classes.cs">
+    <Compile Include="Models\City.cs">
       <DependentUpon>Limitless.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClassesType.cs">
+      <DependentUpon>Limitless.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Country.cs">
       <DependentUpon>Limitless.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
@@ -353,6 +356,18 @@
       <DependentUpon>Limitless.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orders.cs">
+      <DependentUpon>Limitless.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentData.cs">
+      <DependentUpon>Limitless.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentDetail.cs">
+      <DependentUpon>Limitless.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentType.cs">
+      <DependentUpon>Limitless.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\payment_details.cs">
       <DependentUpon>Limitless.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roles.cs">

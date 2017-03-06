@@ -24,5 +24,7 @@ namespace Sample.Models
         public string userID { get; set; }
         public string userName { get; set; }
         public string additionalInfo { get; set; }
+    
+        public virtual Users User { get; set; }
     }
 }

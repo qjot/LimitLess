@@ -17,7 +17,6 @@ namespace Sample.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClassesType()
         {
-            this.Classes = new HashSet<Classes>();
             this.Events = new HashSet<Events>();
         }
     
@@ -25,8 +24,6 @@ namespace Sample.Models
         public string name { get; set; }
         public string description { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Classes> Classes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Events> Events { get; set; }
     }

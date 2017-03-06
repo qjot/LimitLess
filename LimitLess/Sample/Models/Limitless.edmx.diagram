@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1dc0ecbfde794f6ebc6717b988233922" Name="Diagram1" ZoomLevel="91">
+      <Diagram DiagramId="1dc0ecbfde794f6ebc6717b988233922" Name="Diagram1" ZoomLevel="76">
         <EntityTypeShape EntityType="LimitlessModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.ClassesType" Width="1.5" PointX="4.125" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.Events" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.Events" Width="1.5" PointX="6.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.Halls" Width="1.5" PointX="4.125" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.Logs" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.Logs" Width="1.5" PointX="4.125" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.Membership" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.OrderDetails" Width="1.5" PointX="12.625" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.Orders" Width="1.5" PointX="10.125" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.OrderDetails" Width="1.5" PointX="12.125" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.Orders" Width="1.5" PointX="10" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.Roles" Width="1.5" PointX="11.875" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.userClaims" Width="1.5" PointX="10.125" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.userClaims" Width="1.5" PointX="10.125" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.UserLogins" Width="1.5" PointX="10.125" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LimitlessModel.UserRoles" Width="1.5" PointX="12.125" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LimitlessModel.UserRoles" Width="1.5" PointX="12" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LimitlessModel.Users" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="LimitlessModel.FK_dbo_Events_dbo_ClassesType_classesTypeId" ManuallyRouted="false" />
         <AssociationConnector Association="LimitlessModel.FK_dbo_Events_dbo_Halls_hallId" ManuallyRouted="false" />
@@ -30,12 +30,19 @@
         <AssociationConnector Association="LimitlessModel.FK_dbo_userClaims_dbo_Users_IdentityUser_Id" ManuallyRouted="false" />
         <AssociationConnector Association="LimitlessModel.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" ManuallyRouted="false" />
         <AssociationConnector Association="LimitlessModel.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LimitlessModel.City" Width="1.5" PointX="6.375" PointY="12" />
+        <EntityTypeShape EntityType="LimitlessModel.City" Width="1.5" PointX="6.5" PointY="11.625" />
         <EntityTypeShape EntityType="LimitlessModel.Country" Width="1.5" PointX="4.625" PointY="12" />
         <AssociationConnector Association="LimitlessModel.CityUsers" />
         <AssociationConnector Association="LimitlessModel.CountryCity" />
         <AssociationConnector Association="LimitlessModel.CityOrders" />
-        <EntityTypeShape EntityType="LimitlessModel.payment_details" Width="1.5" PointX="15.375" PointY="9" />
+        <EntityTypeShape EntityType="LimitlessModel.PaymentData" Width="1.5" PointX="9.75" PointY="2.625" />
+        <EntityTypeShape EntityType="LimitlessModel.PaymentDetail" Width="1.5" PointX="11.875" PointY="2.5" />
+        <EntityTypeShape EntityType="LimitlessModel.PaymentType" Width="1.5" PointX="7.75" PointY="2.875" />
+        <AssociationConnector Association="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId" />
+        <AssociationConnector Association="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" />
+        <AssociationConnector Association="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" />
+        <AssociationConnector Association="LimitlessModel.PaymentTypeOrders" />
+        <AssociationConnector Association="LimitlessModel.LogsUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

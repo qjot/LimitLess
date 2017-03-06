@@ -11,20 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Classes">
-      <EntityTypeMapping TypeName="LimitlessModel.Classes">
-        <MappingFragment StoreEntitySet="Classes">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="last" ColumnName="last" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="allDay" ColumnName="allDay" />
-          <ScalarProperty Name="maxCapacity" ColumnName="maxCapacity" />
-          <ScalarProperty Name="classesTypeId" ColumnName="classesTypeId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ClassesType">
       <EntityTypeMapping TypeName="LimitlessModel.ClassesType">
         <MappingFragment StoreEntitySet="ClassesType">
@@ -109,10 +95,8 @@
           <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="state" ColumnName="state" />
           <ScalarProperty Name="postalCode" ColumnName="postalCode" />
-          <ScalarProperty Name="country" ColumnName="country" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="total" ColumnName="total" />
@@ -183,12 +167,39 @@
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="address1" ColumnName="address1" />
           <ScalarProperty Name="address2" ColumnName="address2" />
-          <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="state" ColumnName="state" />
           <ScalarProperty Name="postalCode" ColumnName="postalCode" />
           <ScalarProperty Name="membershipId" ColumnName="membershipId" />
           <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
           <ScalarProperty Name="Event_eventId" ColumnName="Event_eventId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDatas">
+      <EntityTypeMapping TypeName="LimitlessModel.PaymentData">
+        <MappingFragment StoreEntitySet="PaymentDatas">
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="paymentTypeId" ColumnName="paymentTypeId" />
+          <ScalarProperty Name="paymentDataId" ColumnName="paymentDataId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentDetails">
+      <EntityTypeMapping TypeName="LimitlessModel.PaymentDetail">
+        <MappingFragment StoreEntitySet="PaymentDetails">
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+          <ScalarProperty Name="paymentDataId" ColumnName="paymentDataId" />
+          <ScalarProperty Name="orderId" ColumnName="orderId" />
+          <ScalarProperty Name="paymentDetailsId" ColumnName="paymentDetailsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentTypes">
+      <EntityTypeMapping TypeName="LimitlessModel.PaymentType">
+        <MappingFragment StoreEntitySet="PaymentTypes">
+          <ScalarProperty Name="paymentType1" ColumnName="paymentType" />
+          <ScalarProperty Name="paymentTypeId" ColumnName="paymentTypeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

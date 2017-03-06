@@ -29,9 +29,7 @@ namespace Limitless.Service
             this.EventsRepository = EventsRepository;
             this.unitOfWork = unitOfWork;
         }
-
         #region IEventService Members
-
         public IEnumerable<Event> GetEvents(string name = null)
         {
             if (string.IsNullOrEmpty(name))
@@ -39,36 +37,25 @@ namespace Limitless.Service
             else
                 return EventsRepository.GetAll();
         }
-
         public Event GetEvent(int id)
         {
             var Event = EventsRepository.GetById(id);
             return Event;
         }
-
-        //public Event GetEvent(string name)
-        //{
-        //    var Event = EventsRepository.GetEventByName(name);
-        //    return Event;
-        //}
-
         public void CreateEvent(Event Event)
         {
             EventsRepository.Add(Event);
             unitOfWork.Commit();
         }
-
         public void SaveEvent()
         {
             unitOfWork.Commit();
         }
-
         public void UpdateEvent(Event Event)
         {
             EventsRepository.Update(Event);
             unitOfWork.Commit();
         }
-
         public bool DeleteEvent(Event eventToDelete)
         {
             try

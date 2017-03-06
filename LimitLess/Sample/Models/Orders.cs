@@ -26,18 +26,21 @@ namespace Sample.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string address { get; set; }
-        public string city { get; set; }
         public string state { get; set; }
         public string postalCode { get; set; }
-        public string country { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public decimal total { get; set; }
         public string nip { get; set; }
         public string userId { get; set; }
+        public int City_cityId { get; set; }
+        public int PaymentType_paymentTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
         public virtual Users Users { get; set; }
+        public virtual City City { get; set; }
+        public virtual PaymentDetail PaymentDetail { get; set; }
+        public virtual PaymentType PaymentType { get; set; }
     }
 }

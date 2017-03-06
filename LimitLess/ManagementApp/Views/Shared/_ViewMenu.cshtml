@@ -2,14 +2,14 @@
     var menus = new[]
     {
         new {LinkText = "LimitLess", ActionName = "Index", ControllerName = "Home", Roles = "All", ImgSrc = "fa-home"},
-        new {LinkText = "Users", ActionName = "Index", ControllerName = "User", Roles = "All,Admin",ImgSrc = "fa-users"},
-        new {LinkText = "Roles", ActionName = "Index", ControllerName = "RolesAdmin", Roles = "All,Admin",ImgSrc = "fa-life-ring"},
-        //new {LinkText = "Trainers", ActionName = "Contact", ControllerName = "Home", Roles = "Admin, Anonymous",ImgSrc = "das"},
+        new {LinkText = "Users", ActionName = "Index", ControllerName = "User", Roles = "Admin",ImgSrc = "fa-users"},
+        new {LinkText = "Roles", ActionName = "Index", ControllerName = "RolesAdmin", Roles = "Admin",ImgSrc = "fa-life-ring"},
+        new {LinkText = "Trainers", ActionName = "Index", ControllerName = "Trainer", Roles = "Trainer, Admin",ImgSrc = "fa-male"},
         new {LinkText = "Classes", ActionName = "Index", ControllerName = "Events", Roles = "Admin, Trainer",ImgSrc = "fa-calendar"},
-       // new {LinkText = "Halls", ActionName = "Index", ControllerName = "Home", Roles = "Admin",ImgSrc = "das"},
-        new {LinkText = "Carnets", ActionName = "Contact", ControllerName = "Home", Roles = "Admin",ImgSrc = "fa-exclamation-circle"},
-        new {LinkText = "Orders", ActionName = "Contact", ControllerName = "Home", Roles = "Dealer,PublicUser",ImgSrc = "fa-check-circle-o"},
-         new {LinkText = "Log", ActionName = "Index", ControllerName = "Logs", Roles = "Admin",ImgSrc = "fa-lock"},
+        new {LinkText = "Halls", ActionName = "Index", ControllerName = "Home", Roles = "Admin, Trainer",ImgSrc = "fa-bookmark"},
+        new {LinkText = "Carnets", ActionName = "Index", ControllerName = "Carnet", Roles = "Admin, Trainer",ImgSrc = "fa-exclamation-circle"},
+        new {LinkText = "Orders", ActionName = "Index", ControllerName = "Order", Roles = "Admin",ImgSrc = "fa-university"},
+        new {LinkText = "Log", ActionName = "Index", ControllerName = "Logs", Roles = "Admin",ImgSrc = "fa-lock"},
     };
 }
 

@@ -13,6 +13,8 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <IISExpressSSLPort>44334</IISExpressSSLPort>
     <NameOfLastUsedPublishProfile>Limitless Local</NameOfLastUsedPublishProfile>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

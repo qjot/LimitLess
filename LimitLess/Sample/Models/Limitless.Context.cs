@@ -26,7 +26,6 @@ namespace Sample.Models
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Classes> Classes { get; set; }
         public virtual DbSet<ClassesType> ClassesType { get; set; }
         public virtual DbSet<Events> Events { get; set; }
         public virtual DbSet<Halls> Halls { get; set; }
@@ -39,5 +38,10 @@ namespace Sample.Models
         public virtual DbSet<UserLogins> UserLogins { get; set; }
         public virtual DbSet<UserRoles> UserRoles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<City> CitySet { get; set; }
+        public virtual DbSet<Country> CountrySet { get; set; }
+        public virtual DbSet<PaymentData> PaymentDatas { get; set; }
+        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LimitlessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LimitlessModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -103,6 +103,31 @@
           <Property Name="total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="nip" Type="nvarchar(max)" />
           <Property Name="userId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="PaymentDatas">
+          <Key>
+            <PropertyRef Name="paymentDataId" />
+          </Key>
+          <Property Name="paymentDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentTypeId" Type="int" Nullable="false" />
+          <Property Name="value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderId" Type="int" Nullable="false" />
+          <Property Name="paymentDataId" Type="int" Nullable="false" />
+          <Property Name="paymentDate" Type="datetime" />
+          <Property Name="value" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="paymentTypeId" />
+          </Key>
+          <Property Name="paymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentType" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -237,6 +262,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_Orders_dbo_PaymentDetails_orderId">
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDetails">
+              <PropertyRef Name="paymentDetailsId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Orders_dbo_Users_userId">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -246,6 +283,34 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentDatas" Type="Self.PaymentDatas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="paymentTypeId" />
+            </Principal>
+            <Dependent Role="PaymentDatas">
+              <PropertyRef Name="paymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+          <End Role="PaymentDatas" Type="Self.PaymentDatas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDatas">
+              <PropertyRef Name="paymentDataId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="paymentDataId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -330,6 +395,9 @@
           <EntitySet Name="Membership" EntityType="Self.Membership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDatas" EntityType="Self.PaymentDatas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userClaims" EntityType="Self.userClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
@@ -355,9 +423,21 @@
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_PaymentDetails_orderId" Association="Self.FK_dbo_Orders_dbo_PaymentDetails_orderId">
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Orders_dbo_Users_userId" Association="Self.FK_dbo_Orders_dbo_Users_userId">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" Association="Self.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="PaymentDatas" EntitySet="PaymentDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" Association="Self.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+            <End Role="PaymentDatas" EntitySet="PaymentDatas" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_userClaims_dbo_Users_IdentityUser_Id" Association="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id">
             <End Role="Users" EntitySet="Users" />
@@ -384,8 +464,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LimitlessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -451,6 +530,7 @@
           <Property Name="userID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="additionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="LimitlessModel.LogsUsers" FromRole="Logs" ToRole="Users" />
         </EntityType>
         <EntityType Name="Membership">
           <Key>
@@ -499,6 +579,9 @@
           <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Orders" ToRole="Users" />
           <NavigationProperty Name="City" Relationship="LimitlessModel.CityOrders" FromRole="Orders" ToRole="City" />
           <Property Name="City_cityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PaymentDetail" Relationship="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId" FromRole="Orders" ToRole="PaymentDetail" />
+          <NavigationProperty Name="PaymentType" Relationship="LimitlessModel.PaymentTypeOrders" FromRole="Orders" ToRole="PaymentType" />
+          <Property Name="PaymentType_paymentTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -578,6 +661,7 @@
           <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserLogins" />
           <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserRoles" />
           <NavigationProperty Name="City" Relationship="LimitlessModel.CityUsers" FromRole="Users" ToRole="City" />
+          <NavigationProperty Name="Log" Relationship="LimitlessModel.LogsUsers" FromRole="Users" ToRole="Logs" />
         </EntityType>
         <Association Name="FK_dbo_Events_dbo_ClassesType_classesTypeId">
           <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="0..1" />
@@ -805,7 +889,29 @@
             <End Role="City" EntitySet="CitySet" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <EntitySet Name="payment_detailsSet" EntityType="LimitlessModel.payment_details" />
+          <EntitySet Name="PaymentDatas" EntityType="LimitlessModel.PaymentData" />
+          <EntitySet Name="PaymentDetails" EntityType="LimitlessModel.PaymentDetail" />
+          <EntitySet Name="PaymentTypes" EntityType="LimitlessModel.PaymentType" />
+          <AssociationSet Name="FK_dbo_Orders_dbo_PaymentDetails_orderId" Association="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId">
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" Association="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="PaymentData" EntitySet="PaymentDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" Association="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+            <End Role="PaymentData" EntitySet="PaymentDatas" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="PaymentTypeOrders" Association="LimitlessModel.PaymentTypeOrders">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="LogsUsers" Association="LimitlessModel.LogsUsers">
+            <End Role="Logs" EntitySet="Logs" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -855,12 +961,93 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="payment_details">
+        <EntityType Name="PaymentData">
           <Key>
-            <PropertyRef Name="paymentDetailsIs" />
+            <PropertyRef Name="paymentDataId" />
           </Key>
-          <Property Name="paymentDetailsIs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="PaymentType" Relationship="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" FromRole="PaymentData" ToRole="PaymentType" />
+          <NavigationProperty Name="PaymentDetails" Relationship="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" FromRole="PaymentData" ToRole="PaymentDetail" />
         </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderId" Type="Int32" Nullable="false" />
+          <Property Name="paymentDataId" Type="Int32" Nullable="false" />
+          <Property Name="paymentDate" Type="DateTime" Precision="3" />
+          <Property Name="value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Order" Relationship="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId" FromRole="PaymentDetail" ToRole="Orders" />
+          <NavigationProperty Name="PaymentData" Relationship="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" FromRole="PaymentDetail" ToRole="PaymentData" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="paymentTypeId" />
+          </Key>
+          <Property Name="paymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PaymentDatas" Relationship="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" FromRole="PaymentType" ToRole="PaymentData" />
+          <NavigationProperty Name="Orders" Relationship="LimitlessModel.PaymentTypeOrders" FromRole="PaymentType" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK_dbo_Orders_dbo_PaymentDetails_orderId">
+          <End Type="LimitlessModel.PaymentDetail" Role="PaymentDetail" Multiplicity="1" />
+          <End Type="LimitlessModel.Orders" Role="Orders" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentDetail">
+              <PropertyRef Name="paymentDetailsId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="orderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+          <End Type="LimitlessModel.PaymentType" Role="PaymentType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LimitlessModel.PaymentData" Role="PaymentData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="paymentTypeId" />
+            </Principal>
+            <Dependent Role="PaymentData">
+              <PropertyRef Name="paymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+          <End Type="LimitlessModel.PaymentData" Role="PaymentData" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LimitlessModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentData">
+              <PropertyRef Name="paymentDataId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="paymentDataId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PaymentTypeOrders">
+          <End Type="LimitlessModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="LimitlessModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="paymentTypeId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PaymentType_paymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LogsUsers">
+          <End Type="LimitlessModel.Logs" Role="Logs" Multiplicity="1" />
+          <End Type="LimitlessModel.Users" Role="Users" Multiplicity="0..1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1041,6 +1228,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDatas">
+            <EntityTypeMapping TypeName="LimitlessModel.PaymentData">
+              <MappingFragment StoreEntitySet="PaymentDatas">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="paymentTypeId" ColumnName="paymentTypeId" />
+                <ScalarProperty Name="paymentDataId" ColumnName="paymentDataId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="LimitlessModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+                <ScalarProperty Name="paymentDataId" ColumnName="paymentDataId" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
+                <ScalarProperty Name="paymentDetailsId" ColumnName="paymentDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="LimitlessModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="paymentType1" ColumnName="paymentType" />
+                <ScalarProperty Name="paymentTypeId" ColumnName="paymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1055,7 +1270,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

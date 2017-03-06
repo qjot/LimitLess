@@ -10,20 +10,6 @@
     <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Classes">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="last" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="allDay" Type="Boolean" Nullable="false" />
-    <Property Name="maxCapacity" Type="Int32" Nullable="false" />
-    <Property Name="classesTypeId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ClassesType" Relationship="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId" FromRole="Classes" ToRole="ClassesType" />
-  </EntityType>
   <EntityType Name="ClassesType">
     <Key>
       <PropertyRef Name="classesTypeId" />
@@ -31,7 +17,6 @@
     <Property Name="classesTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Classes" Relationship="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId" FromRole="ClassesType" ToRole="Classes" />
     <NavigationProperty Name="Events" Relationship="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId" FromRole="ClassesType" ToRole="Events" />
   </EntityType>
   <EntityType Name="Events">
@@ -77,6 +62,7 @@
     <Property Name="userID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="userName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="additionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="LimitlessModel.LogsUsers" FromRole="Logs" ToRole="Users" />
   </EntityType>
   <EntityType Name="Membership">
     <Key>
@@ -114,10 +100,8 @@
     <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -125,6 +109,11 @@
     <Property Name="userId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_dbo_OrderDetails_dbo_Orders_orderId" FromRole="Orders" ToRole="OrderDetails" />
     <NavigationProperty Name="Users" Relationship="Self.FK_dbo_Orders_dbo_Users_userId" FromRole="Orders" ToRole="Users" />
+    <NavigationProperty Name="City" Relationship="LimitlessModel.CityOrders" FromRole="Orders" ToRole="City" />
+    <Property Name="City_cityId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PaymentDetail" Relationship="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId" FromRole="Orders" ToRole="PaymentDetail" />
+    <NavigationProperty Name="PaymentType" Relationship="LimitlessModel.PaymentTypeOrders" FromRole="Orders" ToRole="PaymentType" />
+    <Property Name="PaymentType_paymentTypeId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -191,7 +180,6 @@
     <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="postalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="membershipId" Type="Int32" />
@@ -204,21 +192,9 @@
     <NavigationProperty Name="userClaims" Relationship="Self.FK_dbo_userClaims_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="userClaims" />
     <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_UserLogins_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserLogins" />
     <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Users_IdentityUser_Id" FromRole="Users" ToRole="UserRoles" />
+    <NavigationProperty Name="City" Relationship="LimitlessModel.CityUsers" FromRole="Users" ToRole="City" />
+    <NavigationProperty Name="Log" Relationship="LimitlessModel.LogsUsers" FromRole="Users" ToRole="Logs" />
   </EntityType>
-  <Association Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId">
-    <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Classes" Type="Self.Classes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ClassesType">
-        <PropertyRef Name="classesTypeId" />
-      </Principal>
-      <Dependent Role="Classes">
-        <PropertyRef Name="classesTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_dbo_Events_dbo_ClassesType_classesTypeId">
     <End Role="ClassesType" Type="Self.ClassesType" Multiplicity="0..1" />
     <End Role="Events" Type="Self.Events" Multiplicity="*" />
@@ -371,7 +347,6 @@
   </Association>
   <EntityContainer Name="LimitlessEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-    <EntitySet Name="Classes" EntityType="Self.Classes" />
     <EntitySet Name="ClassesType" EntityType="Self.ClassesType" />
     <EntitySet Name="Events" EntityType="Self.Events" />
     <EntitySet Name="Halls" EntityType="Self.Halls" />
@@ -384,10 +359,6 @@
     <EntitySet Name="UserLogins" EntityType="Self.UserLogins" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
     <EntitySet Name="Users" EntityType="Self.Users" />
-    <AssociationSet Name="FK_dbo_Classes_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Classes_dbo_ClassesType_classesTypeId">
-      <End Role="ClassesType" EntitySet="ClassesType" />
-      <End Role="Classes" EntitySet="Classes" />
-    </AssociationSet>
     <AssociationSet Name="FK_dbo_Events_dbo_ClassesType_classesTypeId" Association="Self.FK_dbo_Events_dbo_ClassesType_classesTypeId">
       <End Role="ClassesType" EntitySet="ClassesType" />
       <End Role="Events" EntitySet="Events" />
@@ -436,5 +407,177 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UserRoles" EntitySet="UserRoles" />
     </AssociationSet>
+    <EntitySet Name="CitySet" EntityType="LimitlessModel.City" />
+    <EntitySet Name="CountrySet" EntityType="LimitlessModel.Country" />
+    <AssociationSet Name="CityUsers" Association="LimitlessModel.CityUsers">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="CountryCity" Association="LimitlessModel.CountryCity">
+      <End Role="Country" EntitySet="CountrySet" />
+      <End Role="City" EntitySet="CitySet" />
+    </AssociationSet>
+    <AssociationSet Name="CityOrders" Association="LimitlessModel.CityOrders">
+      <End Role="City" EntitySet="CitySet" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="PaymentDatas" EntityType="LimitlessModel.PaymentData" />
+    <EntitySet Name="PaymentDetails" EntityType="LimitlessModel.PaymentDetail" />
+    <EntitySet Name="PaymentTypes" EntityType="LimitlessModel.PaymentType" />
+    <AssociationSet Name="FK_dbo_Orders_dbo_PaymentDetails_orderId" Association="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId">
+      <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" Association="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+      <End Role="PaymentType" EntitySet="PaymentTypes" />
+      <End Role="PaymentData" EntitySet="PaymentDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" Association="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+      <End Role="PaymentData" EntitySet="PaymentDatas" />
+      <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentTypeOrders" Association="LimitlessModel.PaymentTypeOrders">
+      <End Role="PaymentType" EntitySet="PaymentTypes" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="LogsUsers" Association="LimitlessModel.LogsUsers">
+      <End Role="Logs" EntitySet="Logs" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city_name" Type="String" Nullable="false" />
+    <Property Name="countryId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="LimitlessModel.CityUsers" FromRole="City" ToRole="Users" />
+    <NavigationProperty Name="Country" Relationship="LimitlessModel.CountryCity" FromRole="City" ToRole="Country" />
+    <Property Name="CountryId1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="LimitlessModel.CityOrders" FromRole="City" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="country_name" Type="String" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="LimitlessModel.CountryCity" FromRole="Country" ToRole="City" />
+  </EntityType>
+  <Association Name="CityUsers">
+    <End Type="LimitlessModel.City" Role="City" Multiplicity="1" />
+    <End Type="LimitlessModel.Users" Role="Users" Multiplicity="*" />
+  </Association>
+  <Association Name="CountryCity">
+    <End Type="LimitlessModel.Country" Role="Country" Multiplicity="1" />
+    <End Type="LimitlessModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityOrders">
+    <End Type="LimitlessModel.City" Role="City" Multiplicity="1" />
+    <End Type="LimitlessModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="City_cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PaymentData">
+    <Key>
+      <PropertyRef Name="paymentDataId" />
+    </Key>
+    <Property Name="paymentDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="paymentTypeId" Type="Int32" Nullable="false" />
+    <Property Name="value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="PaymentType" Relationship="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" FromRole="PaymentData" ToRole="PaymentType" />
+    <NavigationProperty Name="PaymentDetails" Relationship="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" FromRole="PaymentData" ToRole="PaymentDetail" />
+  </EntityType>
+  <EntityType Name="PaymentDetail">
+    <Key>
+      <PropertyRef Name="paymentDetailsId" />
+    </Key>
+    <Property Name="paymentDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderId" Type="Int32" Nullable="false" />
+    <Property Name="paymentDataId" Type="Int32" Nullable="false" />
+    <Property Name="paymentDate" Type="DateTime" Precision="3" />
+    <Property Name="value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Order" Relationship="LimitlessModel.FK_dbo_Orders_dbo_PaymentDetails_orderId" FromRole="PaymentDetail" ToRole="Orders" />
+    <NavigationProperty Name="PaymentData" Relationship="LimitlessModel.FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId" FromRole="PaymentDetail" ToRole="PaymentData" />
+  </EntityType>
+  <EntityType Name="PaymentType">
+    <Key>
+      <PropertyRef Name="paymentTypeId" />
+    </Key>
+    <Property Name="paymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="paymentType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PaymentDatas" Relationship="LimitlessModel.FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId" FromRole="PaymentType" ToRole="PaymentData" />
+    <NavigationProperty Name="Orders" Relationship="LimitlessModel.PaymentTypeOrders" FromRole="PaymentType" ToRole="Orders" />
+  </EntityType>
+  <Association Name="FK_dbo_Orders_dbo_PaymentDetails_orderId">
+    <End Type="LimitlessModel.PaymentDetail" Role="PaymentDetail" Multiplicity="1" />
+    <End Type="LimitlessModel.Orders" Role="Orders" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentDetail">
+        <PropertyRef Name="paymentDetailsId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentDatas_dbo_PaymentTypes_paymentTypeId">
+    <End Type="LimitlessModel.PaymentType" Role="PaymentType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LimitlessModel.PaymentData" Role="PaymentData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="paymentTypeId" />
+      </Principal>
+      <Dependent Role="PaymentData">
+        <PropertyRef Name="paymentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentDetails_dbo_PaymentDatas_paymentDataId">
+    <End Type="LimitlessModel.PaymentData" Role="PaymentData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="LimitlessModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentData">
+        <PropertyRef Name="paymentDataId" />
+      </Principal>
+      <Dependent Role="PaymentDetail">
+        <PropertyRef Name="paymentDataId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentTypeOrders">
+    <End Type="LimitlessModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+    <End Type="LimitlessModel.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentType">
+        <PropertyRef Name="paymentTypeId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="PaymentType_paymentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LogsUsers">
+    <End Type="LimitlessModel.Logs" Role="Logs" Multiplicity="1" />
+    <End Type="LimitlessModel.Users" Role="Users" Multiplicity="0..1" />
+  </Association>
 </Schema>

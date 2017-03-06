@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Limitless.Web.Models;
+using System.Web.Security;
 
 namespace Limitless.Web.Controllers
 {
@@ -76,16 +77,20 @@ namespace Limitless.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                    Session["MyMenu"] = null;
+                    return RedirectToAction("Index", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                //case SignInStatus.RequiresVerification:
+                //    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
-            }
+            
+        }
         }
 
         //

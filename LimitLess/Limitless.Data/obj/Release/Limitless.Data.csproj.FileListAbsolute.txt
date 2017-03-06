@@ -42,3 +42,6 @@ C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Re
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.csproj.GenerateResource.Cache
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.dll
 C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.pdb
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.Migrations.UpdateOrderDetails.resources
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.Migrations.AddPayments.resources
+C:\Users\karol.januszczak\Source\Repos\LimitLess\LimitLess\Limitless.Data\obj\Release\Limitless.Data.Migrations.updateOrderTable.resources

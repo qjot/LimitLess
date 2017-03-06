@@ -11,18 +11,15 @@ namespace Limitless.Data.Repositories
 {
     public class ClassesRepository : RepositoryBase<ClassesType>, IClassesRepository
     {
-        public ClassesRepository(IDbFactory dbFactory)
-            : base(dbFactory)
+        public ClassesRepository(IDbFactory dbFactory)  : base(dbFactory)
         {
         }
-
         public ClassesType GetClassesById(int id)
         {
             var classes = this.DbContext.classesesType.FirstOrDefault(c => c.classesTypeId == id);
 
             return classes;
         }
-
         public override void Update(ClassesType entity)
         {
             

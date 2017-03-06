@@ -9,6 +9,6 @@ namespace Limitless.Model
     public class PaymentType
     {
         public int paymentTypeId { get; set; }
-        public string paymentType { get; set; }
+        public string paymentTypeName { get; set; }
     }
 }

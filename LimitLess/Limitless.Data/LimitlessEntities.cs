@@ -10,12 +10,9 @@ namespace Limitless.Data
 {
     public class LimitlessEntities : DbContext
     {
-        private static string connectionString =
-            @"Data Source=CPX-E4M39MY2P7Q\SQLEXPRESS;Initial Catalog=Limitless;Integrated Security=True";
-        public LimitlessEntities() : base(connectionString)
+        private static string connectionString = ConfigurationManager.AppSettings["connectionString"];
+        public LimitlessEntities() : base(@"Data Source=CPX-E4M39MY2P7Q\SQLEXPRESS;Initial Catalog=Limitless;Integrated Security=True")
         {
-            
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LimitlessEntities, Limitless.Data.Migrations.Configuration>("connectionString"));
             Database.SetInitializer<LimitlessEntities>(null);
         }
         public DbSet<Hall> halls { get; set; }
@@ -50,11 +47,6 @@ namespace Limitless.Data
             modelBuilder.Entity<IdentityUser>().ToTable("Users", "dbo");
             modelBuilder.Entity<User>().ToTable("Users", "dbo");
         }
-
-
-
-
-        //public System.Data.Entity.DbSet<Limitless.Model.User> Users { get; set; }
     }
 
 }
